@@ -39,6 +39,11 @@
 }
 
 /* Global setting */
+
+.container {
+	padding-bottom: 20px;
+}
+
 h1 small {
 	font-size: 16px;
 }
@@ -77,6 +82,9 @@ h2.page-header {
 
 .row.has-top-space {
 	margin-top: 20px;
+}
+.row.has-bottom-space {
+	margin-bottom: 20px;
 }
 .row.has-extra-padding {
 	padding: 20px;
@@ -150,29 +158,29 @@ button.go-with-header {
 	line-height: normal;
 }
 
-/* dinner overview list */
-ul.overview-dish-list {
+/* dinner overview page */
+#pageDinnerOverview ul.overview-dish-list {
 	list-style: none;
 	display: inline-block;
 	margin: 0 auto;
 }
-ul.overview-dish-list li {
+#pageDinnerOverview ul.overview-dish-list li {
 	display: inline-block;
 	position: relative;
 	margin: 20px;
 }
-ul.overview-dish-list li a,
-ul.overview-dish-list li a img {
+#pageDinnerOverview ul.overview-dish-list li a,
+#pageDinnerOverview ul.overview-dish-list li a img {
 	height: 150px;
 	width: 150px;
 }
-ul.overview-dish-list li a img {
+#pageDinnerOverview ul.overview-dish-list li a img {
 	border: 2px solid #ca5000;
 }
-ul.overview-dish-list li a img:hover {
+#pageDinnerOverview ul.overview-dish-list li a img:hover {
 	border-color: #ca0000;
 }
-ul.overview-dish-list li div.dish-title {
+#pageDinnerOverview ul.overview-dish-list li div.dish-title {
 	position: absolute;
 	left: 2px;
 	bottom: 32px;
@@ -183,23 +191,33 @@ ul.overview-dish-list li div.dish-title {
 	opacity: 0.85;
 	text-align: center;	
 }
-ul.overview-dish-list li div.dish-price {
+#pageDinnerOverview ul.overview-dish-list li div.dish-price {
 	width: 100%;
 	line-height: 30px;
 	text-align: right;
 	font-weight: bold;
 	color: #ca5000;
 }
-ul.overview-dish-list li.before-total {
+#pageDinnerOverview ul.overview-dish-list li.before-total {
 	height: 180px;
-	border-left: 2px solid #333333;
+	border-left: 2px solid #333333s;
 	vertical-align: top;
 }
-ul.overview-dish-list li.total {
+#pageDinnerOverview ul.overview-dish-list li.total {
 	margin: 0;
 	text-align: left;
 	font-weight: bold;
 }
-ul.overview-dish-list li.total b {
+#pageDinnerOverview ul.overview-dish-list li.total b {
 	color: #ca5000;
+}
+
+/* dinner preparation page */
+#pagePreparation img.dish-image {
+	margin-top: 10px;
+	border: 2px solid #ca5000;
+	width: 100%;
+}
+#pagePreparation h4.dish-name {
+	text-transform: uppercase;
 }
