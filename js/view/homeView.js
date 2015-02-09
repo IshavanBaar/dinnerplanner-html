@@ -36,5 +36,29 @@ var HomeView = function (container, model) {
 		var newCosts = Math.round((parseFloat(oldCosts) + dishCosts)* 10)/10;
 		$('#totalCosts').text(newCosts);
 	});
+	
+	$('.test-fill-dishes').click(function fillAvailableDishes() {
+		var fullMenu = model.getFullMenu();
+		var numberOfMenuItems = fullMenu.length;
+		for (var i = 0; i < numberOfMenuItems; i++) {
+			var dish = model.getDish(i);
+			var dishName = dish[1];
+			var dishImage = 'images/' + dish[3];
+			var dishDescription = dish[4];
+			
+			$('#availableDishes').append(
+				// '<li><div class="dish-name">'+dishName+'</div></li>' Use this line for testing
+				'<li><img class="dish-picture" src="'+dishImage+'" alt="'+dishName'"><div class="dish-name">'
+				+dishName+'</div><div class="dish-description">'+dishDescription+'</div></li>'
+			);
+		}
+		
+		/* This is what should be put in the list:
+		<li>
+			<a href="#" id="toPageDishDetail" class="page-switch-button"><img class="dish-picture" src="images/meatballs.jpg" alt="Meatballs"></a>
+			div class="dish-name">Meatballs</div>
+			<div class="dish-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris libero lacus, blandit et tortor eget, semper vehicula mauris. </div>
+		</li>*/
+	});
 }
  
