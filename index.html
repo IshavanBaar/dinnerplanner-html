@@ -29,7 +29,7 @@
 					<br>
 					<p>start quickly</p>
 					<p>
-						<button id="toPageHome" class="page-switch-button">Create new dinner</button>
+						<button location="toPageHome" class="page-switch-button">Create new dinner</button>
 					</p>
 					<br>
 				</div>	
@@ -39,10 +39,10 @@
 					<h3>Test page switching</h3>
 					<hr/>
 					<ul class="test-buttons">
-						<li><button id="toPageSelectDish" class="page-switch-button">To Select Dish Page</button></li>
-						<li><button id="toPageDishDetail" class="page-switch-button">To Dish Detail Page</button></li>
-						<li><button id="toPageDinnerOverview" class="page-switch-button">To Dinner Overview Page</button></li>
-						<li><button id="toPagePreparation" class="page-switch-button">To Dinner Preparation Page</button></li>
+						<li><button location="toPageSelectDish" class="page-switch-button">To Select Dish Page</button></li>
+						<li><button location="toPageDishDetail" class="page-switch-button">To Dish Detail Page</button></li>
+						<li><button location="toPageDinnerOverview" class="page-switch-button">To Dinner Overview Page</button></li>
+						<li><button location="toPagePreparation" class="page-switch-button">To Dinner Preparation Page</button></li>
 					</ul>					
 				</div>
 			</div>			
@@ -50,22 +50,59 @@
 		<!-- Select Dish -->
 		<div id="pageSelectDish" class="page">
 			<h2 class="page-header">Select Dish</h2>
-			<button id="toPageHome" class="page-switch-button">Back Home</button>
+			<button location="toPageHome" class="page-switch-button">Back Home</button>
 		</div>
 		<!-- Dish Detail -->
 		<div id="pageDishDetail" class="page">
 			<h2 class="page-header">Dish Detail</h2>
-			<button id="toPageHome" class="page-switch-button">Back Home</button>
+			<button location="toPageHome" class="page-switch-button">Back Home</button>
 		</div>
 		<!-- Dinner Overview -->
 		<div id="pageDinnerOverview" class="page">
-			<h2 class="page-header">Dinner Overview</h2>
-			<button id="toPageHome" class="page-switch-button">Back Home</button>
+			<div class="row has-backround page-header-wrap">
+				<div class="background"></div>
+				<div class="col-md-9"><h3 class="page-header">My Dinner: 4 people</h3></div>
+				<div class="col-md-3"><button location="toPageSelectDish" class="page-switch-button pull-right go-with-header">Go back and edit dinner</button></div>
+			</div>			
+			<div class="row has-backround">
+				<div class="background"></div>
+				<div class="col-md-12 center-align">
+					<ul class="dish-list">
+						<li>
+							<a href="#" id="toPagePreparation">
+								<img src="images/toast.jpg" title="Lasagne"/>
+								<div class="dish-title">Lasagne</div>								
+							</a>
+							<div class="dish-price">160.09 SEK</div>
+						</li>
+						<li>
+							<a href="#" id="toPagePreparation">
+								<img src="images/toast.jpg" title="Lasagne"/>
+								<div class="dish-title">Lasagne</div>								
+							</a>
+							<div class="dish-price">160.09 SEK</div>
+						</li>
+						<li>
+							<a href="#" id="toPagePreparation">
+								<img src="images/toast.jpg" title="Lasagne"/>
+								<div class="dish-title">Lasagne</div>								
+							</a>
+							<div class="dish-price">160.09 SEK</div>
+						</li>
+						<li class="before-total"></li>
+						<li class="total">Total:<br/><b>999 SEK</b></li>
+					</ul>
+				</div>
+			</div>
+			<div class="row has-backround has-top-space has-extra-padding">
+				<div class="background"></div>
+				<div class="col-md-12 center-align"><button location="toPageHome" class="page-switch-button">Print Full Recipe</button></div>
+			</div>			
 		</div>
 		<!-- Dinner Preparation -->
 		<div id="pagePreparation" class="page">
 			<h2 class="page-header">Dinner Preparation</h2>
-			<button id="toPageHome" class="page-switch-button">Back Home</button>
+			<button location="toPageHome" class="page-switch-button">Back Home</button>
 		</div>
 	</div>
 
