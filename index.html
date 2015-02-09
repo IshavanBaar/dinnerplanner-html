@@ -53,7 +53,7 @@
 		<div id="pageSelectDish" class="page">
 			<div class="row has-top-space">
 				<!-- Receipt sidebar -->
-			<div id="receipt" class="col-md-3 has-background">
+			<div id="receipt" class="col-md-3 has-background has-extra-padding">
 				<div class="background"></div>
 				<h2 class="page-header">My Dinner</h2>
 			
@@ -88,7 +88,7 @@
 			</div>
 			<div class="col-md-1"></div>
 			<!-- Select dish pane -->
-			<div class="col-md-8 has-background">
+			<div class="col-md-8 has-background has-extra-padding">
 				<div class="background"></div>
 				<h2 class="page-header">Select Dish</h2>
 				<!-- Select dish header -->
@@ -148,39 +148,95 @@
 		</div>
 		<!-- Dish Detail -->
 		<div id="pageDishDetail" class="page">
-			<h2 class="page-header">Dish Detail</h2>
-			<div id="receipt" class="col-md-3 has-background">
-				<div class="background"></div>
-				<h4>My Dinner</h4>							
-				<input id="peopleInput" class="spinner" value="0"/>
+			<div class="row has-top-space">
+				<div id="receipt" class="col-md-3 has-background has-extra-padding">
+					<div class="background"></div>
+					<h2 class="page-header">My Dinner</h2>	
+					<input id="peopleInput" class="spinner" value="0"/>
 
-				<table id="dinnerCheckList" class="table table-condensed">
-				  <thead>
-					<tr>
-						<th>Dish name</th>
-						<th class="align-right">Cost</th>
-					</tr>
-				  </thead>
-				  <tbody>
-					<tr>
-						<td class="pending-items">Pending</td>
-						<td class="align-right pending-items">0.00</td>
-					</tr>
-				  </tbody>
-				  <tfoot>
-					<tr>
-						<td class="align-right pending-items">SEK</td>
-						<td class="align-right pending-items">0.00</td>
-					</tr>
-				  </tfoot>
-				</table>
+					<table id="dinnerCheckList" class="table table-condensed has-top-space">
+					  <thead>
+						<tr>
+							<th>Dish name</th>
+							<th class="align-right">Cost</th>
+						</tr>
+					  </thead>
+					  <tbody>
+						<tr>
+							<td class="pending-items">Pending</td>
+							<td class="align-right pending-items">0.00</td>
+						</tr>
+					  </tbody>
+					  <tfoot>
+						<tr>
+							<td class="align-right pending-items">SEK</td>
+							<td class="align-right pending-items">0.00</td>
+						</tr>
+					  </tfoot>
+					</table>
+					<p class="align-center"><button location="toPageDinnerOverview" class="page-switch-button">Confirm dinner</button></p>
+				</div>
 				
-				<button id="toPageDinnerOverview" class="page-switch-button">Confirm dinner</button>
-			</div>
-			
-			<!-- Select dish pane -->
-			<div class="col-md-9">
-			</div>
+				<div class="col-md-1"></div>
+				<div class="col-md-8 has-extra-padding">
+					<div class="background"></div>
+					<div class="col-md-6 has-background">
+						<h2 class="page-header">Lasagne</h2>
+						<p><img class="dish-image" src="images/lasagne-full.jpg"/></p>
+						<p class="dish-description">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.</p>
+						<p></p>
+					</div>
+					<div class="col-md-6 has-background">
+						<h2 class="page-header">Ingredients for 4 people</h2>
+						<table id="dishIngredient" class="table table-condensed">
+							<tbody>
+								<tr>
+									<td>2 tbsp</td>
+									<td>olive oil</td>
+									<td>SEK</td>
+									<td class="align-right">0.20</td>
+								</tr>
+								<tr>
+									<td>750 g</td>
+									<td>lean beef mince</td>
+									<td>SEK</td>
+									<td class="align-right">10.00</td>
+								</tr>
+								<tr>
+									<td>90 g</td>
+									<td>pack rosciutto</td>
+									<td>SEK</td>
+									<td class="align-right">15.00</td>
+								</tr>
+								<tr>
+									<td>100 ml</td>
+									<td>tomato sauce</td>
+									<td>SEK</td>
+									<td class="align-right">10.00</td>
+								</tr>
+								<tr>
+									<td>200 ml</td>
+									<td>hot beef stock</td>
+									<td>SEK</td>
+									<td class="align-right">20.00</td>
+								</tr>
+								<tr class="total">
+									<td colspan="2"><button location="toPageDinnerOverview" class="page-switch-button">Confirm dish</button></td>
+									<td>SEK</td>
+									<td class="align-right">55.20</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<div class="col-md-12 has-background">
+						<h2 class="page-header">Preparation</h2>
+						<p class="dish-preparation">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio.
+						<br/><br/>
+						Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus.</p>
+					</div>
+				</div>
+				<!-- Select dish pane -->
+			</div>	
 		</div>
 		<!-- Dinner Overview -->
 		<div id="pageDinnerOverview" class="page">			
@@ -202,7 +258,7 @@
 						<li>
 							<a href="#" id="toPagePreparation">
 								<img src="images/toast.jpg" title="Lasagne"/>
-								<div class="dish-title">Lasagne</div>								
+								<div class="dish-title">Lasagne</div>						
 							</a>
 							<div class="dish-price">160.09 SEK</div>
 						</li>
@@ -243,7 +299,7 @@
 					<h4>Preparation</h4>
 					<p class="dish-preparation">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio.
 					<br/><br/>
-					Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus.
+					Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus.</p>
 				</div>
 			</div>
 			<div class="row has-backround has-extra-padding">
@@ -257,7 +313,7 @@
 					<h4>Preparation</h4>
 					<p class="dish-preparation">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio.
 					<br/><br/>
-					Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus.
+					Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus.</p>
 				</div>
 			</div>
 		</div>
