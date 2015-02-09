@@ -32,11 +32,7 @@ var HomeView = function (container, model) {
 	});
 	
 	function insertText () {
-		document.getElementById('td1').innerHTML = "Some text to enter";
-		
-		<td class="pending-items">Pending</td>
-						<td class="align-right pending-items">0.00</td>
+		document.getElementById('td1').innerHTML = "Some text to enter";	
 	}
-}
 }
  
