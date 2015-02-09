@@ -59,20 +59,23 @@
 				<table id="dinnerCheckList" class="table table-condensed">
 				  <thead>
 					<tr>
-						<th>Dish name</th>
+						<th class="align-left">Quantity</th>
+						<th class="align-center">Name</th>
 						<th class="align-right">Cost</th>
 					</tr>
 				  </thead>
 				  <tbody>
 					<tr>
-						<td class="pending-items">Pending</td>
+						<td class="align-left pending-items"> </td>
+						<td class="align-center pending-items">Pending</td>
 						<td class="align-right pending-items">0.00</td>
 					</tr>
 				  </tbody>
 				  <tfoot>
 					<tr>
-						<td class="align-right pending-items">SEK</td>
-						<td class="align-right pending-items">0.00</td>
+						<td class="align-left pending-items"> </td>
+						<td class="align-center pending-items total-cost-items">SEK</td>
+						<td id="totalCosts" class="align-right pending-items total-cost-items">0.00</td>
 					</tr>
 				  </tfoot>
 				</table>

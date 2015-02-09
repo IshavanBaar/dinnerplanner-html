@@ -7,6 +7,11 @@
 	display: block;
 }
 
+#toPageHome {
+	text-decoration: none;
+	color: #ca5000;
+}
+
 /* Background */
 #page-background {
 	background-image: url('images/background.jpg');
@@ -82,6 +87,22 @@ button:hover {
 	color: #b01414;
 }
 
+#dinnerCheckList tr  td{
+	background-color: #ffffff;
+}
+
+.total-cost-item {
+	font-weight: bold;
+}
+
+.align-left {
+	text-align: left;
+}
+
+.align-center {
+	text-align: center;
+}
+
 .align-right {
 	text-align: right;
 }
@@ -109,9 +130,4 @@ button:hover {
 .dish-list li .dish-description {
 	padding-top: 15px;
 	line-height: normal;
-}
-
-#toPageHome {
-	text-decoration: none;
-	color: #ca5000;
 }

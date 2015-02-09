@@ -21,22 +21,20 @@ var HomeView = function (container, model) {
 	}
 	
 	// Confirm dish by adding it to list
-	$('.confirm-dish-button').click(function() {
-		// hide all other pages
-		$('.page').hide();
-
-		// get page div id from button id
-		var pageDivId = _getPageDivId($(this).attr('id'));
-		// show selected page
-		$('#' + pageDivId).show();
-	});
-	
-	function insertText () {
-		document.getElementById('td1').innerHTML = "Some text to enter";
+	$('.confirm-dish-button').click(function addDishToList() {
+		var tableRef = $('#dinnerCheckList tbody');
+		// Hardcoded values for now 
+		var quantity = 4;
+		var dishName = 'Meatballs';
+		var dishCosts = 77.70;
 		
-		<td class="pending-items">Pending</td>
-						<td class="align-right pending-items">0.00</td>
-	}
-}
+		// Add row to table
+		tableRef.prepend('<tr class="align-left"><td>'+quantity+'</td><td class="align-center">'+dishName+'</td><td class="align-right">'+dishCosts+'</td></tr>');
+		
+		// Change total costs
+		var oldCosts = $('#totalCosts').text();
+		var newCosts = Math.round((parseFloat(oldCosts) + dishCosts)* 10)/10;
+		$('#totalCosts').text(newCosts);
+	});
 }
  
