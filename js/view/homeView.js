@@ -19,5 +19,24 @@ var HomeView = function (container, model) {
 		// add lowercase 'p' letter to the name
 		return 'p' + pageName;
 	}
+	
+	// Confirm dish by adding it to list
+	$('.confirm-dish-button').click(function() {
+		// hide all other pages
+		$('.page').hide();
+
+		// get page div id from button id
+		var pageDivId = _getPageDivId($(this).attr('id'));
+		// show selected page
+		$('#' + pageDivId).show();
+	});
+	
+	function insertText () {
+		document.getElementById('td1').innerHTML = "Some text to enter";
+		
+		<td class="pending-items">Pending</td>
+						<td class="align-right pending-items">0.00</td>
+	}
+}
 }
  
