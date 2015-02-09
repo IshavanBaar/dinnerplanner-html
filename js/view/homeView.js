@@ -1,11 +1,14 @@
 // View for home page
 var HomeView = function (container, model) {
 	
+	// Temporary - used to show selected page
 	$('.page-switch-button').click(function() {
+		// hide all other pages
 		$('.page').hide();
 
 		// get page div id from button id
 		var pageDivId = _getPageDivId($(this).attr('id'));
+		// show selected page
 		$('#' + pageDivId).show();
 	});
 
@@ -16,6 +19,5 @@ var HomeView = function (container, model) {
 		// add lowercase 'p' letter to the name
 		return 'p' + pageName;
 	}
-	
 }
  
