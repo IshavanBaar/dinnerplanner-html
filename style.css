@@ -76,3 +76,42 @@ button:hover {
 #pageHome .row {
 	margin-top: 50px;
 }
+
+/* select dish page */
+#receipt .pending-items {
+	color: #b01414;
+}
+
+.align-right {
+	text-align: right;
+}
+.dish-picture {
+	width: 130px;
+}
+
+.dish-list li {
+	width: 130px;
+	float: left;
+	margin: 25px 28px 0px 0px;
+}
+
+.dish-list li a {
+	padding: 0px;
+}
+
+.dish-list li .dish-name {
+	text-align: center;
+	padding: 5px;
+	color: #ffffff;
+	background-color: #ca5000;
+}
+
+.dish-list li .dish-description {
+	padding-top: 15px;
+	line-height: normal;
+}
+
+#toPageHome {
+	text-decoration: none;
+	color: #ca5000;
+}
