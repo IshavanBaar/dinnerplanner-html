@@ -16,7 +16,7 @@
   <body>
   	<div id="page-background"></div>
 	<div class="container">
-		<h1><a  href="#" id="toPageHome" class="page-switch-button">Homelette</a><small>from the best chefs in the world directly to your chicken</small></h1>
+		<h1><a href="#" location="toPageHome" class="page-switch-button">Homelette</a> <small>from the best chefs in the world directly to your chicken</small></h1>
 		<!-- Home -->
 		<div id="pageHome" class="page">
 			<!-- h2 class="page-header">Home</h2 -->
@@ -29,7 +29,7 @@
 					<br>
 					<p>start quickly</p>
 					<p>
-						<button id="toPageHome" class="page-switch-button">Create new dinner</button>
+						<button location="toPageHome" class="page-switch-button">Create new dinner</button>
 					</p>
 					<br>
 				</div>	
@@ -39,10 +39,10 @@
 					<h3>Test page switching</h3>
 					<hr/>
 					<ul class="test-buttons">
-						<li><button id="toPageSelectDish" class="page-switch-button">To Select Dish Page</button></li>
-						<li><button id="toPageDishDetail" class="page-switch-button">To Dish Detail Page</button></li>
-						<li><button id="toPageDinnerOverview" class="page-switch-button">To Dinner Overview Page</button></li>
-						<li><button id="toPagePreparation" class="page-switch-button">To Dinner Preparation Page</button></li>
+						<li><button location="toPageSelectDish" class="page-switch-button">To Select Dish Page</button></li>
+						<li><button location="toPageDishDetail" class="page-switch-button">To Dish Detail Page</button></li>
+						<li><button location="toPageDinnerOverview" class="page-switch-button">To Dinner Overview Page</button></li>
+						<li><button location="toPagePreparation" class="page-switch-button">To Dinner Preparation Page</button></li>
 					</ul>					
 				</div>
 			</div>			
@@ -138,21 +138,91 @@
 					</li>				  					  					  					  					  					  
 				</ul>			
 			</div>
+
 		</div>
 		<!-- Dish Detail -->
 		<div id="pageDishDetail" class="page">
 			<h2 class="page-header">Dish Detail</h2>
-			<button id="toPageHome" class="page-switch-button">Back Home</button>
+			<button location="toPageHome" class="page-switch-button">Back Home</button>
 		</div>
 		<!-- Dinner Overview -->
-		<div id="pageDinnerOverview" class="page">
-			<h2 class="page-header">Dinner Overview</h2>
-			<button id="toPageHome" class="page-switch-button">Back Home</button>
+		<div id="pageDinnerOverview" class="page">			
+			<div class="row has-backround has-top-space">
+				<div class="background"></div>		
+				<div class="col-md-12">
+					<h2 class="page-header">My Dinner: 4 people</h2>
+					<button location="toPageSelectDish" class="page-switch-button pull-right go-with-header">Go back and edit dinner</button>
+				</div>
+				<div class="col-md-12 center-align">					
+					<ul class="overview-dish-list">
+						<li>
+							<a href="#" id="toPagePreparation">
+								<img src="images/toast.jpg" title="Lasagne"/>
+								<div class="dish-title">Lasagne</div>								
+							</a>
+							<div class="dish-price">160.09 SEK</div>
+						</li>
+						<li>
+							<a href="#" id="toPagePreparation">
+								<img src="images/toast.jpg" title="Lasagne"/>
+								<div class="dish-title">Lasagne</div>								
+							</a>
+							<div class="dish-price">160.09 SEK</div>
+						</li>
+						<li>
+							<a href="#" id="toPagePreparation">
+								<img src="images/toast.jpg" title="Lasagne"/>
+								<div class="dish-title">Lasagne</div>								
+							</a>
+							<div class="dish-price">160.09 SEK</div>
+						</li>
+						<li class="before-total"></li>
+						<li class="total">Total:<br/><b>999 SEK</b></li>
+					</ul>
+				</div>
+			</div>
+			<div class="row has-backround has-top-space has-extra-padding">
+				<div class="background"></div>
+				<div class="col-md-12 center-align"><button location="toPagePreparation" class="page-switch-button">Print Full Recipe</button></div>
+			</div>			
 		</div>
 		<!-- Dinner Preparation -->
 		<div id="pagePreparation" class="page">
-			<h2 class="page-header">Dinner Preparation</h2>
-			<button id="toPageHome" class="page-switch-button">Back Home</button>
+			<div class="row has-backround has-top-space">
+				<div class="background"></div>
+				<div class="col-md-12">
+					<h2 class="page-header">My Dinner: 4 people</h2>
+					<button location="toPageSelectDish" class="page-switch-button pull-right go-with-header">Go back and edit dinner</button>					
+				</div>
+			</div>
+			<div class="row has-backround has-extra-padding">
+				<div class="background"></div>
+				<div class="col-md-2"><img class="dish-image" src="images/toast.jpg" title="Lasagne"/></div>
+				<div class="col-md-4">
+					<h4 class="dish-name">Lasagne</h4>
+					<p class="dish-description">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.</p>
+				</div>
+				<div class="col-md-6">
+					<h4>Preparation</h4>
+					<p class="dish-preparation">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio.
+					<br/><br/>
+					Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus.
+				</div>
+			</div>
+			<div class="row has-backround has-extra-padding">
+				<div class="background"></div>
+				<div class="col-md-2"><img class="dish-image" src="images/meatballs.jpg" title="Meatball"/></div>
+				<div class="col-md-4">
+					<h4 class="dish-name">Meatball</h4>
+					<p class="dish-description">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.</p>
+				</div>
+				<div class="col-md-6">
+					<h4>Preparation</h4>
+					<p class="dish-preparation">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio.
+					<br/><br/>
+					Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus.
+				</div>
+			</div>
 		</div>
 	</div>
 

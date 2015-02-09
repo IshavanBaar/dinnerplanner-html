@@ -7,15 +7,15 @@ var HomeView = function (container, model) {
 		$('.page').hide();
 
 		// get page div id from button id
-		var pageDivId = _getPageDivId($(this).attr('id'));
+		var pageDivId = _getPageDivId($(this).attr('location'));
 		// show selected page
 		$('#' + pageDivId).show();
 	});
 
-	function _getPageDivId(buttonId) {
-		// a page switch button has the id like toPageX, while a page div has the id like PageX
+	function _getPageDivId(buttonLocation) {
+		// a page switch button has the "location" attribute like toPageX, while a page div has the id like PageX
 		// remove first 3 letters in the id
-		var pageName = buttonId.substr(3);
+		var pageName = buttonLocation.substr(3);
 		// add lowercase 'p' letter to the name
 		return 'p' + pageName;
 	}

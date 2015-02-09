@@ -16,6 +16,7 @@
 #page-background {
 	background-image: url('images/background.jpg');
 	background-size: cover;
+	background-position: 0 -120px;
 	display: block;
 	filter: blur(5px);
 	-webkit-filter: blur(5px);
@@ -27,6 +28,10 @@
 	height: 100%;
 }
 
+.has-backround {
+	position: relative;
+}
+
 .background {
 	background-color: #ffffff;
 	width: 100%;
@@ -36,16 +41,29 @@
 	left: 0;
 	z-index: -1;
 	opacity: 0.5;
-	border-radius: 5px;
 }
 
 /* Global setting */
+
+.container {
+	padding-bottom: 20px;
+}
+
 h1 small {
 	font-size: 16px;
 }
 
+h1 a,
+h1 a:hover,
+h1 a:focus,
+h1 a:visited {
+	color: #000000;
+	text-decoration: none;
+}
+
 h1, h2 {
-	font-family: 'Segoe UI Light';
+	font-family: 'Segoe UI Light', 'Segoe UI';
+	font-weight: 100;
 }
 
 h3, h4, h5, h6,
@@ -58,11 +76,37 @@ h2.page-header {
 	border-color: #626c78;
 }
 
+.page-header-wrap {
+	margin: 20px -15px;
+}
+.page-header-wrap h3.page-header {
+	margin: 20px 0;
+	border-bottom: none;
+	color: #333333;
+}
+
+.row.has-top-space {
+	margin-top: 20px;
+}
+.row.has-bottom-space {
+	margin-bottom: 20px;
+}
+.row.has-extra-padding {
+	padding: 20px;
+}
+
 ul.test-buttons {
 	list-style: none;
 }
 ul.test-buttons li {
 	margin-bottom: 20px;
+}
+
+.right-align {
+	text-align: center;
+}
+.center-align {
+	text-align: center;
 }
 
 button {
@@ -75,6 +119,9 @@ button {
 button:hover {
 	border: 1px solid #ca0000;
 	color: #ca0000;
+}
+button.go-with-header {
+	margin-top: -52px;
 }
 
 /* home page */
@@ -130,4 +177,68 @@ button:hover {
 .dish-list li .dish-description {
 	padding-top: 15px;
 	line-height: normal;
+}
+
+/* dinner overview page */
+#pageDinnerOverview ul.overview-dish-list {
+	list-style: none;
+	display: inline-block;
+	margin: 0 auto;
+}
+#pageDinnerOverview ul.overview-dish-list li {
+	display: inline-block;
+	position: relative;
+	margin: 20px;
+}
+#pageDinnerOverview ul.overview-dish-list li a,
+#pageDinnerOverview ul.overview-dish-list li a img {
+	height: 150px;
+	width: 150px;
+}
+#pageDinnerOverview ul.overview-dish-list li a img {
+	border: 2px solid #ca5000;
+}
+#pageDinnerOverview ul.overview-dish-list li a img:hover {
+	border-color: #ca0000;
+}
+#pageDinnerOverview ul.overview-dish-list li div.dish-title {
+	position: absolute;
+	left: 2px;
+	bottom: 32px;
+	padding: 5px;
+	color: #ffffff;
+	background: #ca5000;
+	width: 146px;
+	opacity: 0.85;
+	text-align: center;	
+}
+#pageDinnerOverview ul.overview-dish-list li div.dish-price {
+	width: 100%;
+	line-height: 30px;
+	text-align: right;
+	font-weight: bold;
+	color: #ca5000;
+}
+#pageDinnerOverview ul.overview-dish-list li.before-total {
+	height: 180px;
+	border-left: 2px solid #333333s;
+	vertical-align: top;
+}
+#pageDinnerOverview ul.overview-dish-list li.total {
+	margin: 0;
+	text-align: left;
+	font-weight: bold;
+}
+#pageDinnerOverview ul.overview-dish-list li.total b {
+	color: #ca5000;
+}
+
+/* dinner preparation page */
+#pagePreparation img.dish-image {
+	margin-top: 10px;
+	border: 2px solid #ca5000;
+	width: 100%;
+}
+#pagePreparation h4.dish-name {
+	text-transform: uppercase;
 }
