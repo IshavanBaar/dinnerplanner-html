@@ -8,6 +8,8 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
+    <!-- Spinner Lib CSS -->
+    <link rel="stylesheet" href="js/lib/jquery.bootstrap-touchspin.css">
     <!-- Custom CSS -->
 	<link rel="stylesheet" href="style.css">
 	<!-- favicon -->
@@ -21,7 +23,7 @@
 		<div id="pageHome" class="page">
 			<!-- h2 class="page-header">Home</h2 -->
 			<div class="row">
-				<div class="col-md-6">				
+				<div class="col-md-6">
 					<div class="background"></div>
 					<h3>A Home Dinner Service</h3>
 					<hr/>
@@ -49,8 +51,10 @@
 		</div>
 		<!-- Select Dish -->
 		<div id="pageSelectDish" class="page">
-			<!-- Receipt sidebar -->
-			<div id="receipt" class="col-md-3">
+			<div class="row has-top-space">
+				<!-- Receipt sidebar -->
+			<div id="receipt" class="col-md-3 has-background">
+				<div class="background"></div>
 				<h2 class="page-header">My Dinner</h2>
 			
 				<span  id="peopleLabel">People</span> 
@@ -82,12 +86,13 @@
 				
 				<button id="toPageDinnerOverview" class="page-switch-button">Confirm dinner</button>
 			</div>
-			
+			<div class="col-md-1"></div>
 			<!-- Select dish pane -->
-			<div class="col-md-9">
+			<div class="col-md-8 has-background">
+				<div class="background"></div>
+				<h2 class="page-header">Select Dish</h2>
 				<!-- Select dish header -->
-				<div class="row" id="selectDishHeader">
-					<h2 class="page-header">Select Dish</h2>
+				<div class="row" id="selectDishHeader">					
 					
 					<div class="col-md-4">
 						<div class="input-group">
@@ -138,12 +143,44 @@
 					</li>				  					  					  					  					  					  
 				</ul>			
 			</div>
+			</div>			
 
 		</div>
 		<!-- Dish Detail -->
 		<div id="pageDishDetail" class="page">
 			<h2 class="page-header">Dish Detail</h2>
-			<button location="toPageHome" class="page-switch-button">Back Home</button>
+			<div id="receipt" class="col-md-3 has-background">
+				<div class="background"></div>
+				<h4>My Dinner</h4>							
+				<input id="peopleInput" class="spinner" value="0"/>
+
+				<table id="dinnerCheckList" class="table table-condensed">
+				  <thead>
+					<tr>
+						<th>Dish name</th>
+						<th class="align-right">Cost</th>
+					</tr>
+				  </thead>
+				  <tbody>
+					<tr>
+						<td class="pending-items">Pending</td>
+						<td class="align-right pending-items">0.00</td>
+					</tr>
+				  </tbody>
+				  <tfoot>
+					<tr>
+						<td class="align-right pending-items">SEK</td>
+						<td class="align-right pending-items">0.00</td>
+					</tr>
+				  </tfoot>
+				</table>
+				
+				<button id="toPageDinnerOverview" class="page-switch-button">Confirm dinner</button>
+			</div>
+			
+			<!-- Select dish pane -->
+			<div class="col-md-9">
+			</div>
 		</div>
 		<!-- Dinner Overview -->
 		<div id="pageDinnerOverview" class="page">			
@@ -230,6 +267,8 @@
     <script src="https://code.jquery.com/jquery.js"></script>
     <!-- Bootstrap JavaScript, needed if you want for instance tabs, models, popovers etc. -->
     <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+    <!-- external libraries -->
+	<script src="js/lib/jquery.bootstrap-touchspin.js"></script>
 
 	<!-- The application JavaScript code -->
 	<script src="js/app.js"></script>

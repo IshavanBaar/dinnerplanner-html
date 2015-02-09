@@ -11,4 +11,11 @@ $(function() {
 	var dinnerModel = new DinnerModel();
 
 	var homeView = new HomeView($('#homePage'), dinnerModel);
+
+	$('.spinner').TouchSpin({
+      verticalbuttons: true,
+      verticalupclass: 'glyphicon glyphicon-plus',
+      verticaldownclass: 'glyphicon glyphicon-minus',
+      prefix: 'People: '
+    });	
 });
