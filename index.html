@@ -16,7 +16,7 @@
   <body>
   	<div id="page-background"></div>
 	<div class="container">
-		<h1>Homelette <small>from the best chefs in the world directly to your chicken</small></h1>
+		<h1><a href="#" location="toPageHome" class="page-switch-button">Homelette</a> <small>from the best chefs in the world directly to your chicken</small></h1>
 		<!-- Home -->
 		<div id="pageHome" class="page">
 			<!-- h2 class="page-header">Home</h2 -->
@@ -49,8 +49,93 @@
 		</div>
 		<!-- Select Dish -->
 		<div id="pageSelectDish" class="page">
-			<h2 class="page-header">Select Dish</h2>
-			<button location="toPageHome" class="page-switch-button">Back Home</button>
+			<!-- Receipt sidebar -->
+			<div id="receipt" class="col-md-3">
+				<h2 class="page-header">My Dinner</h2>
+			
+				<span  id="peopleLabel">People</span> 
+				<input id="peopleInput" type="number" value="0"/>
+
+				<table id="dinnerCheckList" class="table table-condensed">
+				  <thead>
+					<tr>
+						<th>Dish name</th>
+						<th class="align-right">Cost</th>
+					</tr>
+				  </thead>
+				  <tbody>
+					<tr>
+						<td class="pending-items">Pending</td>
+						<td class="align-right pending-items">0.00</td>
+					</tr>
+				  </tbody>
+				  <tfoot>
+					<tr>
+						<td class="align-right pending-items">SEK</td>
+						<td class="align-right pending-items">0.00</td>
+					</tr>
+				  </tfoot>
+				</table>
+				
+				<button id="toPageDinnerOverview" class="page-switch-button">Confirm dinner</button>
+			</div>
+			
+			<!-- Select dish pane -->
+			<div class="col-md-9">
+				<!-- Select dish header -->
+				<div class="row" id="selectDishHeader">
+					<h2 class="page-header">Select Dish</h2>
+					
+					<div class="col-md-4">
+						<div class="input-group">
+							<input type="text" placeholder="Enter key words">
+							<span>
+								<button type="submit" class="page-search-button">Search</button>
+								<!-- TODO search functionality-->
+							</span>
+						</div>
+					</div>
+					
+					<div class="col-md-4">
+						<select class="form-control">
+							<option value="" selected disabled>Please select</option>
+							<option>Starter</option>
+							<option>Main</option>
+							<option>Desert</option>
+							<!-- TODO filter functionality-->
+						</select>
+					</div>
+				</div>
+				<!-- Select dish content -->
+				<ul class="list-unstyled dish-list">
+					<li>
+						<a href="#" id="toPageDishDetail" class="page-switch-button"><img class="dish-picture" src="images/meatballs.jpg" alt="Meatballs"></a>
+						<div class="dish-name">Meatballs</div>
+						<div class="dish-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris libero lacus, blandit et tortor eget, semper vehicula mauris. </div>
+					</li>
+					<li>
+						<img class="dish-picture" src="images/bakedbrie2.jpg" alt="Baked Brie" >
+						<div class="dish-name">Baked Brie</div>
+						<div class="dish-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris libero lacus, blandit et tortor eget, semper vehicula mauris. </div>
+					</li>
+					<li>
+						<img class="dish-picture" src="images/meatballs.jpg" alt="Meatballs" >
+						<div class="dish-name">Meatballs</div>
+						<div class="dish-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris libero lacus, blandit et tortor eget, semper vehicula mauris. </div>
+					</li>
+					<li>
+						<img class="dish-picture" src="images/bakedbrie2.jpg" alt="Baked Brie" >
+						<div class="dish-name">Baked Brie</div>
+						<div class="dish-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris libero lacus, blandit et tortor eget, semper vehicula mauris. </div>
+					</li>
+					<li>
+						<img class="dish-picture" src="images/meatballs.jpg" alt="Meatballs" >
+						<div class="dish-name">Meatballs</div>
+						<div class="dish-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris libero lacus, blandit et tortor eget, semper vehicula mauris. </div>
+					</li>				  					  					  					  					  					  
+				</ul>			
+			</div>
+
 		</div>
 		<!-- Dish Detail -->
 		<div id="pageDishDetail" class="page">
@@ -67,7 +152,7 @@
 			<div class="row has-backround">
 				<div class="background"></div>
 				<div class="col-md-12 center-align">
-					<ul class="dish-list">
+					<ul class="overview-dish-list">
 						<li>
 							<a href="#" id="toPagePreparation">
 								<img src="images/toast.jpg" title="Lasagne"/>
