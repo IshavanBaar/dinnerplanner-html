@@ -4,7 +4,6 @@ var HomeView = function (container, model) {
 	// Variable to manage current dish.
 	this.currentDish; 
 	this.currentDishQuantity; // TODO - something with this.
-	this.currentDishFilled = false; // TODO does not work, find another way to do this
 	
 	// TODO hardcoded, not get away? - used to show selected page
 	$('.page-switch-button').click(function() {
@@ -77,10 +76,7 @@ var HomeView = function (container, model) {
 			
 			
 			// Fill dish detail page if not filled already
-			//if (this.currentDishFilled === false) {
-				//TODO find another way to do this, this does not work
-				fillPageDishDetail(dishName, dishImage, dishDescription, dishIngredients, dishPreparation);
-			//}
+			fillPageDishDetail(dishName, dishImage, dishDescription, dishIngredients, dishPreparation);
 			
 			// Hide all other pages
 			$('.page').hide();
@@ -96,8 +92,7 @@ var HomeView = function (container, model) {
 			$('#dishNameDescription').append(
 				'<h2 class="page-header">'+dishName+'</h2>'+
 				'<p><img class="dish-image" src="'+dishImage+'"/></p>'+
-				'<p class="dish-description">'+dishDescription+'</p>'+
-				'<p class="align-left"><button location="toPageSelectDish" class="page-switch-button">back to Select Dish</button></p>'
+				'<p class="dish-description">'+dishDescription+'</p>'
 			);
 
 			// Fill dish ingredients table
@@ -127,9 +122,6 @@ var HomeView = function (container, model) {
 				'<h2 class="page-header">Preparation</h2>'+			
 				'<p class="dish-preparation">'+dishPreparation+'</p>'	
 			)
-			
-			// Put on true, because the dish page has been filled with data
-			//this.currentDishFilled = true; TODO find another way to do this
 		}
 	});
 	
