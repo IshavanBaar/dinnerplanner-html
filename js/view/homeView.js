@@ -92,6 +92,7 @@ var HomeView = function (container, model) {
 		// Fills dish detail page
 		function fillPageDishDetail(dishName, dishImage, dishDescription, dishIngredients, dishPreparation) {
 			// Fill dish name and description fields
+			$('#dishNameDescription').empty();
 			$('#dishNameDescription').append(
 				'<h2 class="page-header">'+dishName+'</h2>'+
 				'<p><img class="dish-image" src="'+dishImage+'"/></p>'+
@@ -108,7 +109,8 @@ var HomeView = function (container, model) {
 				var ingredientQuantity = ingredient.quantity;
 				var ingredientUnit = ingredient.unit;
 				var ingredientPrice = ingredient.price;
-			
+				
+				$('#dishIngredients').empty();
 				$('#dishIngredients').append(
 					'<tr>'+
 						'<td>'+ingredientQuantity+'</td>'+
@@ -119,7 +121,8 @@ var HomeView = function (container, model) {
 				);	
 			}
 
-			// Fill preparation field 	
+			// Fill preparation field 
+			$('#dishPreparation').empty();			
 			$('#dishPreparation').append(			
 				'<h2 class="page-header">Preparation</h2>'+			
 				'<p class="dish-preparation">'+dishPreparation+'</p>'	
@@ -129,8 +132,6 @@ var HomeView = function (container, model) {
 			//this.currentDishFilled = true; TODO find another way to do this
 		}
 	});
-		
-	
 	
 	function getCurrentDishPrice(dish) {
 		var dishIngredients = dish.ingredients;
