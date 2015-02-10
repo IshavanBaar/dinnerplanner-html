@@ -55,7 +55,7 @@
 		<!-- Select Dish -->
 		<div id="pageSelectDish" class="page">
 			<div class="row has-top-space">
-				<!-- Receipt sidebar -->
+			<!-- Receipt sidebar -->
 			<div id="receipt" class="col-md-3 has-background has-extra-padding">
 				<div class="background"></div>
 				<h2 class="page-header">My Dinner</h2>	
@@ -125,26 +125,29 @@
 					<div class="background"></div>
 					<h2 class="page-header">My Dinner</h2>	
 					<input id="peopleInput" class="spinner" value="0"/>
-
+					
 					<table id="dinnerCheckList" class="table table-condensed has-top-space">
-					  <thead>
-						<tr>
-							<th>Dish name</th>
-							<th class="align-right">Cost</th>
-						</tr>
-					  </thead>
-					  <tbody>
-						<tr>
-							<td class="pending-items">Pending</td>
-							<td class="align-right pending-items">0.00</td>
-						</tr>
-					  </tbody>
-					  <tfoot>
-						<tr>
-							<td class="align-right pending-items">SEK</td>
-							<td class="align-right pending-items">0.00</td>
-						</tr>
-					  </tfoot>
+						<thead>
+							<tr>
+								<th class="align-left">Quantity</th>
+								<th class="align-center">Name</th>
+								<th class="align-right">Cost</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td class="align-left pending-items"> </td>
+								<td class="align-center pending-items">Pending</td>
+								<td class="align-right pending-items">0.00</td>
+							</tr>
+						</tbody>
+						<tfoot>
+							<tr>
+								<td class="align-left pending-items"> </td>
+								<td class="align-center pending-items total-cost-items">SEK</td>
+								<td id="totalCosts" class="align-right pending-items total-cost-items">0.00</td>
+							</tr>
+						</tfoot>
 					</table>
 					<p class="align-center"><button location="toPageDinnerOverview" class="page-switch-button">Confirm dinner</button></p>
 				</div>
@@ -152,59 +155,22 @@
 				<div class="col-md-1"></div>
 				<div class="col-md-8 has-extra-padding">
 					<div class="background"></div>
-					<div class="col-md-6 has-background">
-						<h2 class="page-header">Lasagne</h2>
-						<p><img class="dish-image" src="images/lasagne-full.jpg"/></p>
-						<p class="dish-description">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.</p>
-						<p></p>
+					<div id="dishNameDescription" class="col-md-6 has-background">
+						<!-- Here come the dish name and description when button is clicked-->
 					</div>
 					<div class="col-md-6 has-background">
 						<h2 class="page-header">Ingredients for 4 people</h2>
-						<table id="dishIngredient" class="table table-condensed">
+						<table id="dishIngredients" class="table table-condensed">
 							<tbody>
-								<tr>
-									<td>2 tbsp</td>
-									<td>olive oil</td>
-									<td>SEK</td>
-									<td class="align-right">0.20</td>
-								</tr>
-								<tr>
-									<td>750 g</td>
-									<td>lean beef mince</td>
-									<td>SEK</td>
-									<td class="align-right">10.00</td>
-								</tr>
-								<tr>
-									<td>90 g</td>
-									<td>pack rosciutto</td>
-									<td>SEK</td>
-									<td class="align-right">15.00</td>
-								</tr>
-								<tr>
-									<td>100 ml</td>
-									<td>tomato sauce</td>
-									<td>SEK</td>
-									<td class="align-right">10.00</td>
-								</tr>
-								<tr>
-									<td>200 ml</td>
-									<td>hot beef stock</td>
-									<td>SEK</td>
-									<td class="align-right">20.00</td>
-								</tr>
-								<tr class="total">
-									<td colspan="2"><button location="toPageDinnerOverview" class="page-switch-button">Confirm dish</button></td>
-									<td>SEK</td>
-									<td class="align-right">55.20</td>
-								</tr>
+								<!-- Here come the dish ingredients when button is clicked-->
 							</tbody>
 						</table>
 					</div>
-					<div class="col-md-12 has-background">
-						<h2 class="page-header">Preparation</h2>
-						<p class="dish-preparation">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio.
-						<br/><br/>
-						Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus.</p>
+					<p class="align-left"><button id="confirm-dish-button" location="toPageSelectDish" class="page-switch-button">Confirm Dish</button></p>
+					<!-- TODO something with current dish price here-->
+					
+					<div id="dishPreparation" class="col-md-12 has-background">
+						<!-- Here comes the dish preparation when button is clicked-->
 					</div>
 				</div>
 				<!-- Select dish pane -->
@@ -274,7 +240,7 @@
 					Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus.</p>
 				</div>
 			</div>
-			<div class="row has-backround has-extra-padding">
+			<div class="row has-background has-extra-padding">
 				<div class="background"></div>
 				<div class="col-md-2"><img class="dish-image" src="images/meatballs.jpg" title="Meatball"/></div>
 				<div class="col-md-4">
