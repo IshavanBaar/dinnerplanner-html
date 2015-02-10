@@ -4,6 +4,9 @@ var HomeView = function (container, model) {
 	// Variable to manage current dish.
 	this.currentDish; 
 	this.currentDishQuantity; // TODO - something with this.
+
+	var dummyText = 'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.'
+		+ '<br/><br/> Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus.';
 	
 	// TODO hardcoded, not get away? - used to show selected page
 	$('.page-switch-button').click(function() {
@@ -70,19 +73,15 @@ var HomeView = function (container, model) {
 			// Needed fields for dish detail page
 			var dishName = currentDish.name;
 			var dishImage = 'images/'+ currentDish.image;
-			var dishDescription = currentDish.description.substr(0, 37) + '...'; 
+			var dishDescription = currentDish.description; 
 			var dishIngredients = currentDish.ingredients;
-			var dishPreparation = currentDish.description.substr(0, 37) + '...'; // No preparation field in dishes array?!
+			var dishPreparation = dummyText;
 			
 			
 			// Fill dish detail page if not filled already
 			fillPageDishDetail(dishName, dishImage, dishDescription, dishIngredients, dishPreparation);
-			
-			// Hide all other pages
-			$('.page').hide();
-			
-			// Show selected page
-			$('#pageDishDetail').show();
+						
+			loadPage('#pageDishDetail');
 		});
 		
 		// Fills dish detail page
@@ -91,11 +90,13 @@ var HomeView = function (container, model) {
 			$('#dishNameDescription').empty();
 			$('#dishNameDescription').append(
 				'<h2 class="page-header">'+dishName+'</h2>'+
-				'<p><img class="dish-image" src="'+dishImage+'"/></p>'+
-				'<p class="dish-description">'+dishDescription+'</p>'
-			);
+				'<div class="image-wrap"><img class="dish-image" src="'+dishImage+'"/></div>'+
+				'<p class="dish-description">'+dishDescription+'</p>' +
+				'<button id="dishDetailBackButton" location="toPageSelectDish" class="page-switch-button">Back to Select Dish</button>'
+			);			
 
 			// Fill dish ingredients table
+			$('#dishIngredients').empty();
 			var numberOfIngredients = dishIngredients.length;
 			for (var i = 0; i<numberOfIngredients; i++) {
 				var ingredient = dishIngredients[i];
@@ -105,23 +106,28 @@ var HomeView = function (container, model) {
 				var ingredientUnit = ingredient.unit;
 				var ingredientPrice = ingredient.price;
 				
-				$('#dishIngredients').empty();
 				$('#dishIngredients').append(
 					'<tr>'+
 						'<td>'+ingredientQuantity+'</td>'+
-						'<td>'+ingredientName+'</td>'+
 						'<td>'+ingredientUnit+'</td>'+
+						'<td>'+ingredientName+'</td>'+
+						'<td>SEK</td>'+
 						'<td class="align-right">'+ingredientPrice+'</td>'+
 					'</tr>'
 				);	
 			}
 
 			// Fill preparation field 
-			$('#dishPreparation').empty();			
+			$('#dishPreparation').empty();		
 			$('#dishPreparation').append(			
 				'<h2 class="page-header">Preparation</h2>'+			
 				'<p class="dish-preparation">'+dishPreparation+'</p>'	
 			)
+
+			// handle back button click
+			$('.page-switch-button#dishDetailBackButton').click(function() {
+				loadPage('#pageSelectDish');
+			});
 		}
 	});
 	
@@ -141,6 +147,11 @@ var HomeView = function (container, model) {
 			currentDishPrice += ingredientPrice;
 		}
 		return Math.round(currentDishPrice * 10)/10;
+	}
+
+	function loadPage(pageSelector) {
+		$('.page').hide();
+		$(pageSelector).show();
 	}
 }
  
