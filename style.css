@@ -61,6 +61,10 @@ h1 a:visited {
 	text-decoration: none;
 }
 
+h1 a:hover {
+	opacity: 0.6;
+}
+
 h1, h2 {
 	font-family: 'Segoe UI Light', 'Segoe UI';
 	font-weight: 100;
@@ -113,19 +117,43 @@ ul.test-buttons li {
 	text-align: center;
 }
 
+input[type="text"], select.form-control {
+	height: 30px;
+	padding-left: 10px;
+	font-family: 'Segoe UI';
+	background-color: transparent;
+	border-radius: 0;
+	border: 1px solid #888888;
+	outline: none;
+}
+input[type="text"]:hover, select.form-control:hover,
+input[type="text"]:focus, select.form-control:focus {
+	border-color: #ca0000;	
+}
+
+select.form-control {
+	padding-top: 3px;
+}
+
 button {
 	border: 1px solid #ca5000;
 	color: #ca5000;
 	background-color: transparent;
 	outline: none;
 	font-weight: 500;
+	height: 30px;	
 }
 button:hover {
 	border: 1px solid #ca0000;
 	color: #ca0000;
 }
 button.go-with-header {
-	margin-top: -52px;
+	margin-top: -55px;
+}
+
+.bootstrap-touchspin .input-group-btn-vertical .bootstrap-touchspin-up,
+.bootstrap-touchspin .input-group-btn-vertical .bootstrap-touchspin-down {
+	height: 15px;
 }
 
 .table.table-condensed tr:first-child td {
@@ -161,28 +189,44 @@ button.go-with-header {
 	width: 120px;
 }
 
-.dish-list li {
+#pageSelectDish #selectDishHeader > div > :first-child {
+	width: 100%;
+}
+
+#pageSelectDish .dish-list li {
 	width: 120px;
-	float: left;
-	margin: 25px 28px 0px 0px;
+	display: inline-block;
+	margin: 10px;
 }
 
-.dish-list li:last-child {
-	margin-right: 0;
-}
-
-.dish-list li a {
+#pageSelectDish .dish-list li a {
 	padding: 0px;
 }
+#pageSelectDish .dish-list li a:hover {
+	text-decoration: none;
+	opacity: 0.6;
+} 
 
-.dish-list li .dish-name {
+#pageSelectDish .dish-list li img {
+	position: relative;
+	width: 120px;
+	height: 120px;	
+	border: 2px solid #ca5000;
+}
+
+#pageSelectDish .dish-list li .dish-name {
 	text-align: center;
 	padding: 5px;
 	color: #ffffff;
 	background-color: #ca5000;
+	margin-top: -30px;
+	opacity: 0.85;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow: hidden;
 }
 
-.dish-list li .dish-description {
+#pageSelectDish .dish-list li .dish-description {
 	padding-top: 15px;
 	line-height: normal;
 }
@@ -220,10 +264,11 @@ button.go-with-header {
 	width: 150px;
 }
 #pageDinnerOverview ul.overview-dish-list li a img {
-	border: 2px solid #ca5000;
+	border: 2px solid #ca5000;	
 }
 #pageDinnerOverview ul.overview-dish-list li a img:hover {
 	border-color: #ca0000;
+	opacity: 0.6;
 }
 #pageDinnerOverview ul.overview-dish-list li div.dish-title {
 	position: absolute;

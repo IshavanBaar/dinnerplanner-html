@@ -18,8 +18,7 @@
   <body>
   	<div id="page-background"></div>
 	<div class="container">
-		<h1><a href="#" location="toPageHome" class="page-switch-button">Homelette</a> <small>from the best chefs in the world directly to your chicken</small></h1>
-		<button class="test-fill-dishes">Test filling the dishes</button>		
+		<h1><a href="#" location="toPageHome" class="page-switch-button">Homelette</a> <small>from the best chefs in the world directly to your chicken</small></h1>		
 		<!-- Home -->
 		<div id="pageHome" class="page">
 			<!-- h2 class="page-header">Home</h2 -->
@@ -32,12 +31,14 @@
 					<br>
 					<p>start quickly</p>
 					<p>
-						<button location="toPageHome" class="page-switch-button">Create new dinner</button>
+						<button location="toPageSelectDish" class="page-switch-button">Create new dinner</button>
 					</p>
 					<br>
 				</div>	
+
 				<div class="col-md-1"></div>
 				<div class="col-md-5">
+<!--				
 					<div class="background"></div>
 					<h3>Test page switching</h3>
 					<hr/>
@@ -47,6 +48,7 @@
 						<li><button location="toPageDinnerOverview" class="page-switch-button">To Dinner Overview Page</button></li>
 						<li><button location="toPagePreparation" class="page-switch-button">To Dinner Preparation Page</button></li>
 					</ul>					
+-->					
 				</div>
 			</div>			
 		</div>
@@ -56,12 +58,10 @@
 				<!-- Receipt sidebar -->
 			<div id="receipt" class="col-md-3 has-background has-extra-padding">
 				<div class="background"></div>
-				<h2 class="page-header">My Dinner</h2>
-			
-				<span  id="peopleLabel">People</span> 
-				<input id="peopleInput" type="number" value="0"/>
+				<h2 class="page-header">My Dinner</h2>	
+				<input id="peopleInput" class="spinner" value="0"/>
 
-				<table id="dinnerCheckList" class="table table-condensed">
+				<table id="dinnerCheckList" class="table table-condensed has-top-space">
 				  <thead>
 					<tr>
 						<th class="align-left">Quantity</th>
@@ -84,28 +84,20 @@
 					</tr>
 				  </tfoot>
 				</table>
-				
-				<button id="toPageDinnerOverview" class="page-switch-button">Confirm dinner</button>
+				<p class="align-center"><button location="toPageDinnerOverview" class="page-switch-button">Confirm dinner</button></p>
 			</div>
+			
 			<div class="col-md-1"></div>
 			<!-- Select dish pane -->
 			<div class="col-md-8 has-background has-extra-padding">
 				<div class="background"></div>
 				<h2 class="page-header">Select Dish</h2>
 				<!-- Select dish header -->
-				<div class="row" id="selectDishHeader">					
-					
-					<div class="col-md-4">
-						<div class="input-group">
-							<input type="text" placeholder="Enter key words">
-							<span>
-								<button type="submit" class="page-search-button">Search</button>
-								<!-- TODO search functionality -->
-							</span>
-						</div>
+				<div class="row" id="selectDishHeader">									
+					<div class="col-md-5">
+						<input type="text" placeholder="Enter key words">
 					</div>
-					
-					<div class="col-md-4">
+					<div class="col-md-5">
 						<select class="form-control">
 							<option value="" selected disabled>Please select</option>
 							<option>Starter</option>
@@ -114,11 +106,14 @@
 							<!-- TODO filter functionality -->
 						</select>
 					</div>
+					<div class="col-md-2"><button type="submit" class="page-search-button">Search</button></div>
 				</div>
 				<!-- Select dish content -->
-				<ul id="availableDishes" class="list-unstyled dish-list">
-					<!-- Here is the place for the example data --> 	  					  					  					  					  					  
-				</ul>			
+				<div class="row align-center has-top-space">
+					<div class="col-md-12">
+						<ul id="availableDishes" class="list-unstyled dish-list"></ul>
+					</div>
+				</div>				
 			</div>
 			</div>			
 

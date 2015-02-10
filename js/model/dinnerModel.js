@@ -1,9 +1,9 @@
 //DinnerModel Object constructor
 var DinnerModel = function() {
- 
-	var numberOfGuests;
-	var menu;	
 
+	this.numberOfGuests = 0;
+	this.menu = [];	
+ 
 	this.setNumberOfGuests = function(num) {
 		this.numberOfGuests = num;
 	}
@@ -15,7 +15,7 @@ var DinnerModel = function() {
 
 	//Returns the dish that is on the menu for selected type 
 	this.getSelectedDish = function(type) {
-		var menu = this.getFullMenu();
+		var menu = this.menu;
 		for (var i = 0; i< menu.length; i++) {
 			if (menu[i].type === type) {
 				return menu[i];
@@ -24,28 +24,44 @@ var DinnerModel = function() {
 	}
 
 	//Returns all the dishes on the menu.
-	this.getFullMenu = function() {
-		return this.dishes;
+	this.getFullMenu = function() {		
+		return this.menu;
 	}
 
 	//Returns all ingredients for all the dishes on the menu.
 	this.getAllIngredients = function() {
-		//TODO Lab 2
+		var menu = this.menu;
+		var allIngredients = [];
+		for (var i = 0; i < menu.length; i++) {
+			var ingredients = menu[i].ingredients;
+			for (var j = 0; j < ingredients.length; j++) {
+				allIngredients.push(ingredients[j]);
+			}
+		}
+		return allIngredients;
 	}
 
 	//Returns the total price of the menu (all the ingredients multiplied by number of guests).
 	this.getTotalMenuPrice = function() {
-		//TODO Lab 2
+		var totalPrice = 0;
+		var ingredients = this.getAllIngredients();
+		for (var i = 0; i < ingredients.length; i++) {
+			total += ingredients[i].price;
+		}
+
+		return total;
 	}
 
 	//Adds the passed dish to the menu. If the dish of that type already exists on the menu
 	//it is removed from the menu and the new one added.
 	this.addDishToMenu = function(id) {
-		var dish = getDish(id);
+		var dish = this.getDish(id);
 		// check if the dish alerady existed
+/*		
 		if (dishisexisted) {
 			removeDishFromMenu(dish.id);
 		}
+*/				
 		this.menu.push(dish);
 	}
 
@@ -77,7 +93,7 @@ var DinnerModel = function() {
 				found = true;
 			}
 		}
-	  	return dish.type == type && found;
+		return type ? dish.type == type && found : dish;	  	 
 	  });	
 	}
 
