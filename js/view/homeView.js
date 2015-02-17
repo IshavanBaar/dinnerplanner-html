@@ -1,10 +1,10 @@
 // View for home page
-var HomeView = function (container, model) {	
+var HomeView = function (container, model, eventController) {	
 	
 	// Variable to manage current dish.
-	this.currentDish; 
 	this.currentDishQuantity; // TODO - something with this.
-
+	this.currentDish;
+	
 	var dummyText = 'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.'
 		+ '<br/><br/> Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus.';
 	
@@ -29,9 +29,13 @@ var HomeView = function (container, model) {
 	
 	// Confirm dish by adding it to list
 	$('#confirm-dish-button').click(function addDishToList() {
+		// Inform eventController that something has been added to the list.
+		eventController.itemAddedToList();
+		updateCurrentDish(model.getDish(eventController.currentlySelectedDish)); // TODO This must be wrong...
+		
 		var tableRef = $('#dinnerCheckList tbody'); 
 		
-		var quantity = -999; // TODO - hardcoded values for now
+		var quantity = 1; // We can keep this 1 by default since there is no quantity chooser
 		var dishName = currentDish.name;
 		var dishCosts = getCurrentDishPrice(currentDish);
 		
@@ -65,10 +69,13 @@ var HomeView = function (container, model) {
 		}
 		
 		// Show dish detail page when clicking a dish
-		$('a.dish-item').click(function() {
+		$('a.dish-item').click(function() {			
 			// Get dish clicked
 			var dishId = $(this).attr('dish-id');
-			currentDish = model.getDish(dishId);
+			updateCurrentDish(model.getDish(dishId));
+			
+			// EventController will get informed of the click
+			eventController.itemClicked(dishId);
 			
 			// Needed fields for dish detail page
 			var dishName = currentDish.name;
@@ -76,7 +83,6 @@ var HomeView = function (container, model) {
 			var dishDescription = currentDish.description; 
 			var dishIngredients = currentDish.ingredients;
 			var dishPreparation = dummyText;
-			
 			
 			// Fill dish detail page if not filled already
 			fillPageDishDetail(dishName, dishImage, dishDescription, dishIngredients, dishPreparation);
@@ -152,6 +158,10 @@ var HomeView = function (container, model) {
 	function loadPage(pageSelector) {
 		$('.page').hide();
 		$(pageSelector).show();
+	}
+	
+	function updateCurrentDish(dish) {
+		this.currentDish = dish;
 	}
 }
  

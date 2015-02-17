@@ -6,11 +6,13 @@ $(function() {
 	
 	//And create the needed controllers and views
 	var exampleView = new ExampleView($("#exampleView"), model);
-*/
+	*/
 
 	var dinnerModel = new DinnerModel();
-
-	var homeView = new HomeView($('#homePage'), dinnerModel);
+	
+	var eventController = new EventController(dinnerModel);
+	
+	var homeView = new HomeView($('#homePage'), dinnerModel, eventController);
 
 	$('.spinner').TouchSpin({
       verticalbuttons: true,
