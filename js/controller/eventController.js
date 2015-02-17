@@ -54,4 +54,12 @@ var EventController = function(view, model) {
 		});	
 	});
 	
+	////
+	// Handle confirmation of dish
+	////
+	$('#confirm-dish-button').click(function(dish-id) {
+		model.addDishToMenu(dish-id);		
+		view.update('#pageSelectDish');
+	}
+	
 }
