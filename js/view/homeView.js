@@ -27,6 +27,17 @@ var HomeView = function (container, model) {
 		return 'p' + pageName;
 	}
 
+	// make the spinner for guest number input
+	$('.spinner').TouchSpin({
+      verticalbuttons: true,
+      verticalupclass: 'glyphicon glyphicon-plus',
+      verticaldownclass: 'glyphicon glyphicon-minus',
+      prefix: 'People: ',
+      max: 100,
+      min: 1,
+      initval: 1
+    });
+
 	// Confirm dish by adding it to list
 	$('#confirm-dish-button').click(function addDishToList() {
 		// Inform eventController that something has been added to the list.
@@ -151,7 +162,13 @@ var HomeView = function (container, model) {
 
 	this.update = function(page) {
 		// load dynamic fields
-		fillPageDishDetail(this.currentDish);
+		// - number of guests
+		$('.spinner').val(model.getNumberOfGuests());
+		// - selected dish
+		if (this.currentDish) {
+			fillPageDishDetail(this.currentDish);
+		}
+
 		// load the page
 		loadPage(page);
 	}

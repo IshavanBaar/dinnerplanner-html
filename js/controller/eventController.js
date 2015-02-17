@@ -10,6 +10,16 @@ var EventController = function(view, model) {
 	}	
 
 	////
+	// Start new dinner
+	////
+	$('#startButton').click(function() {
+		// reset everything
+		model.setNumberOfGuests(0);
+		view.currentDish = null;
+		view.update('#pageSelectDish');		
+	});
+
+	////
 	// Handle guest number changed
 	////
 	$('.spinner').change(function() {

@@ -12,12 +12,5 @@ $(function() {
 
 	var homeView = new HomeView($('#homePage'), dinnerModel);
 
-	var eventController = new EventController(homeView, dinnerModel);
-
-	$('.spinner').TouchSpin({
-      verticalbuttons: true,
-      verticalupclass: 'glyphicon glyphicon-plus',
-      verticaldownclass: 'glyphicon glyphicon-minus',
-      prefix: 'People: '
-    });	
+	var eventController = new EventController(homeView, dinnerModel);	
 });
