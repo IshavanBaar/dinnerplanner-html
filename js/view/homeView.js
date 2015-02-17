@@ -1,5 +1,5 @@
 // View for home page
-var HomeView = function (container, model, eventController) {	
+var HomeView = function (container, model) {	
 	
 	// Variable to manage current dish.
 	this.currentDishQuantity; // TODO - something with this.
@@ -26,12 +26,12 @@ var HomeView = function (container, model, eventController) {
 		// add lowercase 'p' letter to the name
 		return 'p' + pageName;
 	}
-	
+
 	// Confirm dish by adding it to list
 	$('#confirm-dish-button').click(function addDishToList() {
 		// Inform eventController that something has been added to the list.
-		eventController.itemAddedToList();
-		updateCurrentDish(model.getDish(eventController.currentlySelectedDish)); // TODO This must be wrong...
+		//eventController.itemAddedToList();
+		//updateCurrentDish(model.getDish(eventController.currentlySelectedDish)); // TODO This must be wrong...
 		
 		var tableRef = $('#dinnerCheckList tbody'); 
 		
@@ -68,74 +68,61 @@ var HomeView = function (container, model, eventController) {
 			);
 		}
 		
-		// Show dish detail page when clicking a dish
-		$('a.dish-item').click(function() {			
-			// Get dish clicked
-			var dishId = $(this).attr('dish-id');
-			updateCurrentDish(model.getDish(dishId));
-			
-			// EventController will get informed of the click
-			eventController.itemClicked(dishId);
-			
-			// Needed fields for dish detail page
-			var dishName = currentDish.name;
-			var dishImage = 'images/'+ currentDish.image;
-			var dishDescription = currentDish.description; 
-			var dishIngredients = currentDish.ingredients;
-			var dishPreparation = dummyText;
-			
-			// Fill dish detail page if not filled already
-			fillPageDishDetail(dishName, dishImage, dishDescription, dishIngredients, dishPreparation);
-						
-			loadPage('#pageDishDetail');
-		});
-		
-		// Fills dish detail page
-		function fillPageDishDetail(dishName, dishImage, dishDescription, dishIngredients, dishPreparation) {
-			// Fill dish name and description fields
-			$('#dishNameDescription').empty();
-			$('#dishNameDescription').append(
-				'<h2 class="page-header">'+dishName+'</h2>'+
-				'<div class="image-wrap"><img class="dish-image" src="'+dishImage+'"/></div>'+
-				'<p class="dish-description">'+dishDescription+'</p>' +
-				'<button id="dishDetailBackButton" location="toPageSelectDish" class="page-switch-button">Back to Select Dish</button>'
-			);			
-
-			// Fill dish ingredients table
-			$('#dishIngredients').empty();
-			var numberOfIngredients = dishIngredients.length;
-			for (var i = 0; i<numberOfIngredients; i++) {
-				var ingredient = dishIngredients[i];
-				
-				var ingredientName = ingredient.name;
-				var ingredientQuantity = ingredient.quantity;
-				var ingredientUnit = ingredient.unit;
-				var ingredientPrice = ingredient.price;
-				
-				$('#dishIngredients').append(
-					'<tr>'+
-						'<td>'+ingredientQuantity+'</td>'+
-						'<td>'+ingredientUnit+'</td>'+
-						'<td>'+ingredientName+'</td>'+
-						'<td>SEK</td>'+
-						'<td class="align-right">'+ingredientPrice+'</td>'+
-					'</tr>'
-				);	
-			}
-
-			// Fill preparation field 
-			$('#dishPreparation').empty();		
-			$('#dishPreparation').append(			
-				'<h2 class="page-header">Preparation</h2>'+			
-				'<p class="dish-preparation">'+dishPreparation+'</p>'	
-			)
-
-			// handle back button click
-			$('.page-switch-button#dishDetailBackButton').click(function() {
-				loadPage('#pageSelectDish');
-			});
-		}
+		// deleted. handle dish click event in controller
 	});
+
+	// Fills dish detail page
+	function fillPageDishDetail(currentDish) {
+		// get fields
+		var dishName = currentDish.name;
+		var dishImage = 'images/'+ currentDish.image;
+		var dishDescription = currentDish.description; 
+		var dishIngredients = currentDish.ingredients;
+		var dishPreparation = dummyText;
+
+		// Fill dish name and description fields
+		$('#dishNameDescription').empty();
+		$('#dishNameDescription').append(
+			'<h2 class="page-header">'+dishName+'</h2>'+
+			'<div class="image-wrap"><img class="dish-image" src="'+dishImage+'"/></div>'+
+			'<p class="dish-description">'+dishDescription+'</p>' +
+			'<button id="dishDetailBackButton" location="toPageSelectDish" class="page-switch-button">Back to Select Dish</button>'
+		);			
+
+		// Fill dish ingredients table
+		$('#dishIngredients').empty();
+		var numberOfIngredients = dishIngredients.length;
+		for (var i = 0; i<numberOfIngredients; i++) {
+			var ingredient = dishIngredients[i];
+			
+			var ingredientName = ingredient.name;
+			var ingredientQuantity = ingredient.quantity;
+			var ingredientUnit = ingredient.unit;
+			var ingredientPrice = ingredient.price;
+			
+			$('#dishIngredients').append(
+				'<tr>'+
+					'<td>'+ingredientQuantity+'</td>'+
+					'<td>'+ingredientUnit+'</td>'+
+					'<td>'+ingredientName+'</td>'+
+					'<td>SEK</td>'+
+					'<td class="align-right">'+ingredientPrice+'</td>'+
+				'</tr>'
+			);	
+		}
+
+		// Fill preparation field 
+		$('#dishPreparation').empty();		
+		$('#dishPreparation').append(			
+			'<h2 class="page-header">Preparation</h2>'+			
+			'<p class="dish-preparation">'+dishPreparation+'</p>'	
+		)
+
+		// handle back button click
+		$('.page-switch-button#dishDetailBackButton').click(function() {
+			loadPage('#pageSelectDish');
+		});
+	}
 	
 	function getCurrentDishPrice(dish) {
 		var dishIngredients = dish.ingredients;
@@ -159,9 +146,14 @@ var HomeView = function (container, model, eventController) {
 		$('.page').hide();
 		$(pageSelector).show();
 	}
-	
-	function updateCurrentDish(dish) {
-		this.currentDish = dish;
+
+	// deleted. update the model in controller, not in view		
+
+	this.update = function(page) {
+		// load dynamic fields
+		fillPageDishDetail(this.currentDish);
+		// load the page
+		loadPage(page);
 	}
 }
  

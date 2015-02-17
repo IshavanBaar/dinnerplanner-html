@@ -8,11 +8,11 @@ $(function() {
 	var exampleView = new ExampleView($("#exampleView"), model);
 	*/
 
-	var dinnerModel = new DinnerModel();
-	
-	var eventController = new EventController(dinnerModel);
-	
-	var homeView = new HomeView($('#homePage'), dinnerModel, eventController);
+	var dinnerModel = new DinnerModel();	
+
+	var homeView = new HomeView($('#homePage'), dinnerModel);
+
+	var eventController = new EventController(homeView, dinnerModel);
 
 	$('.spinner').TouchSpin({
       verticalbuttons: true,
