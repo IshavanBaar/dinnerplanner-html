@@ -23,7 +23,7 @@ var DinnerModel = function() {
 		}
 	}
 
-	//Returns all the dishes on the menu.
+	//Returns all the selected dishes on the menu.
 	this.getFullMenu = function() {		
 		return this.menu;
 	}
@@ -56,13 +56,21 @@ var DinnerModel = function() {
 	//it is removed from the menu and the new one added.
 	this.addDishToMenu = function(id) {
 		var dish = this.getDish(id);
-		// check if the dish alerady existed
-/*		
-		if (dishisexisted) {
+		// check if the dish already existed
+		if (dishIsInMenu(id)) {
 			removeDishFromMenu(dish.id);
+			// TODO increase quantity of dish in menu with one
 		}
-*/				
 		this.menu.push(dish);
+	}
+	
+	this.dishIsInMenu = function(id) {
+		for (var i = 0; i< menu.length; i++) {
+			if (menu[i].id === id) {
+				return true;
+			}
+		}
+		return false;
 	}
 
 	//Removes dish from menu
@@ -103,7 +111,7 @@ var DinnerModel = function() {
 			if(dishes[key].id == id) {
 				return dishes[key];
 			}
-		}
+	  }
 	}
 
 	// the dishes variable contains an array of all the 

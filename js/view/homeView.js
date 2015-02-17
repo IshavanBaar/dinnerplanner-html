@@ -40,10 +40,7 @@ var HomeView = function (container, model) {
 
 	// Confirm dish by adding it to list
 	$('#confirm-dish-button').click(function addDishToList() {
-		// Inform eventController that something has been added to the list.
-		//eventController.itemAddedToList();
-		//updateCurrentDish(model.getDish(eventController.currentlySelectedDish)); // TODO This must be wrong...
-		
+
 		var tableRef = $('#dinnerCheckList tbody'); 
 		
 		var quantity = 1; // We can keep this 1 by default since there is no quantity chooser
@@ -168,7 +165,8 @@ var HomeView = function (container, model) {
 		if (this.currentDish) {
 			fillPageDishDetail(this.currentDish);
 		}
-
+		// TODO something here on loading the selectDish page
+		
 		// load the page
 		loadPage(page);
 	}
