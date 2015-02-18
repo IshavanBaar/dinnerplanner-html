@@ -157,12 +157,12 @@ var HomeView = function (container, model) {
 	$('#confirmDinnerButton').click(function fillPageDishOverview() {
 		var fullMenu = model.getFullMenu();
 		var numberOfSelectedDishes = fullMenu.length;
+		$('.overview-dish-list').empty(); 
 		for (var i = 0; i < numberOfSelectedDishes; i++) {
 			var dish = fullMenu[i];
 			var dishName = dish.name;
 			var dishImage = 'images/'+ dish.image;
 			
-			//$('.overview-dish-list').empty(); TODO this gives problems now
 			$('.overview-dish-list').append(
 				'<li>'+
 					'<a href="#" id="toPagePreparation">'+
@@ -184,13 +184,13 @@ var HomeView = function (container, model) {
 	$('#pagePreparationButton').click(function fillPagePreparation() {	
 		var fullMenu = model.getFullMenu();
 		var numberOfSelectedDishes = fullMenu.length;
+		$('#overview-preparation-list').empty();
 		for (var i = 0; i < numberOfSelectedDishes; i++) {
 			var dish = fullMenu[i];
 			var dishName = dish.name;
 			var dishImage = 'images/'+ dish.image;
 			var dishDescription = dish.description.substr(0, 37) + '...';
 			
-			//$('#overview-preparation-list').empty(); TODO this gives problems now
 			$('#overview-preparation-list').append(
 				'<div class="row has-background has-extra-padding">'+
 					'<div class="background"></div>'+
