@@ -1,13 +1,4 @@
 var EventController = function(view, model) {
-	this.currentlySelectedDish = -1;
-	
-	this.itemClicked = function(id) {
-		this.currentlySelectedDish = id;
-	}
-	
-	this.itemAddedToList = function() {
-		model.addDishToMenu(currentlySelectedDish);		
-	}	
 
 	////
 	// Start new dinner
@@ -17,6 +8,10 @@ var EventController = function(view, model) {
 		model.setNumberOfGuests(1);
 		view.currentDish = null;
 		view.update('#pageSelectDish');		
+	});
+	
+	$('#homeButton').click(function() {
+		view.update('#pageHome');
 	});
 
 	////
@@ -81,4 +76,21 @@ var EventController = function(view, model) {
 	$('#pageDishDetail').on('click', '#dishDetailBackButton', function() {
 		view.update('#pageSelectDish');
 	});	
+	
+	
+	////
+	// Handle print full recipe button that leads to preparation page
+	////
+	$('#pagePreparationButton').click(function() {
+		view.update('#pagePreparation');
+	});
+	
+	////
+	// Handle confirm dinner button that leads to dinner overview
+	////
+	$('#confirmDinnerButton').click(function() {
+		view.update('#pageDinnerOverview');
+	});
+	
+	
 }

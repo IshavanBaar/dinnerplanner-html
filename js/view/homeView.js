@@ -2,22 +2,10 @@
 var HomeView = function (container, model) {	
 	
 	// Variable to manage current dish.
-	this.currentDishQuantity; // TODO - something with this.
 	this.currentDish;
 	
 	var dummyText = 'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.'
 		+ '<br/><br/> Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus.';
-	
-	// TODO hardcoded, not get away? - used to show selected page
-	$('.page-switch-button').click(function() {
-		// hide all other pages
-		$('.page').hide();
-
-		// get page div id from button id
-		var pageDivId = _getPageDivId($(this).attr('location'));
-		// show selected page
-		$('#' + pageDivId).show();
-	});
 
 	function _getPageDivId(buttonLocation) {
 		// a page switch button has the "location" attribute like toPageX, while a page div has the id like PageX
@@ -154,21 +142,26 @@ var HomeView = function (container, model) {
 	}
 	
 	//Fills the dish overview page.
-	$('#confirmDinnerButton').click(function fillPageDishOverview() {
+	this.fillPageDishOverview = function() {
 		var fullMenu = model.getFullMenu();
 		var numberOfSelectedDishes = fullMenu.length;
+		var quantity = model.getNumberOfGuests();
+		
+		var totalCost = model.getTotalMenuPrice() * quantity;
+		
 		$('.overview-dish-list').empty(); 
 		for (var i = 0; i < numberOfSelectedDishes; i++) {
 			var dish = fullMenu[i];
 			var dishName = dish.name;
 			var dishImage = 'images/'+ dish.image;
+			var dishCost = getCurrentDishPrice(fullMenu[i]) * quantity;
 			
 			$('.overview-dish-list').append(
 				'<li>'+
 					'<a href="#" id="toPagePreparation">'+
 						'<img src="'+dishImage+'" alt="'+dishName+'" title="'+dishName+'/>'+
 					'<div class="dish-title">'+dishName+'</div></a>'+
-					'<div class="dish-price">'+'999'+'</div>'+ //TODO change -999 to dishPrice
+					'<div class="dish-price">'+dishCost+' SEK</div>'+
 				'</li>'
 			);
 		}
@@ -176,14 +169,15 @@ var HomeView = function (container, model) {
 		//At the end, append total price.
 		$('.overview-dish-list').append(
 			'<li class="before-total"></li>'+
-			'<li class="total">Total:<br/><b>999 SEK</b></li>' //TODO change 999 to dishPrice
+			'<li class="total">Total:<br/><b>'+totalCost+' SEK</b></li>'
 		);
-	});
+	}
 	
 	//Fills the preparation page after print button has been hit.
-	$('#pagePreparationButton').click(function fillPagePreparation() {	
+	this.fillPagePreparation = function() {	
 		var fullMenu = model.getFullMenu();
 		var numberOfSelectedDishes = fullMenu.length;
+		
 		$('#overview-preparation-list').empty();
 		for (var i = 0; i < numberOfSelectedDishes; i++) {
 			var dish = fullMenu[i];
@@ -208,7 +202,7 @@ var HomeView = function (container, model) {
 				'</div>'
 			);
 		}
-	});
+	}
 
 	function loadPage(pageSelector) {
 		$('.page').hide();
@@ -230,7 +224,10 @@ var HomeView = function (container, model) {
 		if (this.currentDish) {
 			this.fillPageDishDetail();
 		}
-		// TODO something here on loading the selectDish page
+
+		// fill information in dish overview and preparation pages
+		this.fillPagePreparation();
+		this.fillPageDishOverview();
 		
 		// load the page
 		loadPage(page);

@@ -58,8 +58,8 @@ var DinnerModel = function() {
 		var dish = this.getDish(id);
 		// check if the dish already existed
 		if (this.isDishInMenu(id)) {
-			//removeDishFromMenu(id);
-			// TODO increase quantity of dish in menu with one
+			alert('Dish already exists!');
+			removeDishFromMenu(id);
 		}
 		this.menu.push(dish);
 	}
@@ -68,7 +68,7 @@ var DinnerModel = function() {
 	this.isDishInMenu =  function(id) {
 		var menu = this.getFullMenu();
 		for (var i = 0; i < menu.length; i++) {
-			if (menu[i].id === id) {
+			if (menu[i].id === parseInt(id)) {
 				return true;
 			}
 		}
@@ -77,7 +77,7 @@ var DinnerModel = function() {
 
 	//Removes dish from menu
 	this.removeDishFromMenu = function(id) {
-		var menu = this.getFullMenu();
+		var menu = this.menu;
 		for (var i = 0; i< menu.length; i++) {
 			if (menu[i].id === id) {
 				menu.splice(i, 1);

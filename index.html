@@ -18,7 +18,7 @@
   <body>
   	<div id="page-background"></div>
 	<div class="container">
-		<h1><a href="#" location="toPageHome" class="page-switch-button">Homelette</a> <small>from the best chefs in the world directly to your chicken</small></h1>		
+		<h1><a href="#" id="homeButton" >Homelette</a> <small>from the best chefs in the world directly to your chicken</small></h1>		
 		<!-- Home -->
 		<div id="pageHome" class="page">
 			<!-- h2 class="page-header">Home</h2 -->
@@ -103,7 +103,7 @@
 							<option>Starter</option>
 							<option>Main</option>
 							<option>Desert</option>
-							<!-- TODO filter functionality -->
+							<!-- TODO search/filter functionality -->
 						</select>
 					</div>
 					<div class="col-md-2"><button type="submit" class="page-search-button">Search</button></div>
@@ -199,7 +199,7 @@
 			<div class="row has-background has-top-space">
 				<div class="background"></div>
 				<div class="col-md-12">
-					<h2 class="page-header">My Dinner: 4 people</h2>
+					<h2 class="page-header">My Dinner: <span class="guest-count">0</span> people</h2>
 					<button location="toPageSelectDish" class="page-switch-button pull-right go-with-header">Go back and edit dinner</button>					
 				</div>
 			</div>
