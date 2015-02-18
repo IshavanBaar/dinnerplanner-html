@@ -84,7 +84,7 @@
 					</tr>
 				  </tfoot>
 				</table>
-				<p id="confirm-dinner-button" class="align-center"><button location="toPageDinnerOverview" class="page-switch-button">Confirm dinner</button></p>
+				<p id="confirmDinnerButton" class="align-center"><button location="toPageDinnerOverview" class="page-switch-button">Confirm dinner</button></p>
 			</div>
 			
 			<div class="col-md-1"></div>
@@ -186,29 +186,6 @@
 				</div>
 				<div class="col-md-12 center-align">					
 					<ul class="overview-dish-list">
-						<li>
-							<a href="#" id="toPagePreparation">
-								<img src="images/toast.jpg" title="Lasagne"/>
-								<div class="dish-title">Lasagne</div>								
-							</a>
-							<div class="dish-price">160.09 SEK</div>
-						</li>
-						<li>
-							<a href="#" id="toPagePreparation">
-								<img src="images/toast.jpg" title="Lasagne"/>
-								<div class="dish-title">Lasagne</div>						
-							</a>
-							<div class="dish-price">160.09 SEK</div>
-						</li>
-						<li>
-							<a href="#" id="toPagePreparation">
-								<img src="images/toast.jpg" title="Lasagne"/>
-								<div class="dish-title">Lasagne</div>								
-							</a>
-							<div class="dish-price">160.09 SEK</div>
-						</li>
-						<li class="before-total"></li>
-						<li class="total">Total:<br/><b>999 SEK</b></li>
 					</ul>
 				</div>
 			</div>
@@ -226,33 +203,7 @@
 					<button location="toPageSelectDish" class="page-switch-button pull-right go-with-header">Go back and edit dinner</button>					
 				</div>
 			</div>
-			<div class="row has-background has-extra-padding">
-				<div class="background"></div>
-				<div class="col-md-2"><img class="dish-image" src="images/toast.jpg" title="Lasagne"/></div>
-				<div class="col-md-4">
-					<h4 class="dish-name">Lasagne</h4>
-					<p class="dish-description">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.</p>
-				</div>
-				<div class="col-md-6">
-					<h4>Preparation</h4>
-					<p class="dish-preparation">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio.
-					<br/><br/>
-					Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus.</p>
-				</div>
-			</div>
-			<div class="row has-background has-extra-padding">
-				<div class="background"></div>
-				<div class="col-md-2"><img class="dish-image" src="images/meatballs.jpg" title="Meatball"/></div>
-				<div class="col-md-4">
-					<h4 class="dish-name">Meatball</h4>
-					<p class="dish-description">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.</p>
-				</div>
-				<div class="col-md-6">
-					<h4>Preparation</h4>
-					<p class="dish-preparation">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio.
-					<br/><br/>
-					Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus.</p>
-				</div>
+			<div id="overview-preparation-list">
 			</div>
 		</div>
 	</div>
