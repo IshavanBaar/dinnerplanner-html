@@ -154,7 +154,7 @@ var HomeView = function (container, model) {
 	}
 	
 	//Fills the dish overview page.
-	function fillPageDishOverview() {
+	$('#confirmDinnerButton').click(function fillPageDishOverview() {
 		var fullMenu = model.getFullMenu();
 		var numberOfSelectedDishes = fullMenu.length;
 		for (var i = 0; i < numberOfSelectedDishes; i++) {
@@ -162,7 +162,7 @@ var HomeView = function (container, model) {
 			var dishName = dish.name;
 			var dishImage = 'images/'+ dish.image;
 			
-			$('.overview-dish-list').empty();
+			//$('.overview-dish-list').empty(); TODO this gives problems now
 			$('.overview-dish-list').append(
 				'<li>'+
 					'<a href="#" id="toPagePreparation">'+
@@ -178,18 +178,19 @@ var HomeView = function (container, model) {
 			'<li class="before-total"></li>'+
 			'<li class="total">Total:<br/><b>999 SEK</b></li>' //TODO change 999 to dishPrice
 		);
-	}
+	});
 	
 	//Fills the preparation page after print button has been hit.
-	function fillPagePreparation() {	
+	$('#pagePreparationButton').click(function fillPagePreparation() {	
 		var fullMenu = model.getFullMenu();
 		var numberOfSelectedDishes = fullMenu.length;
 		for (var i = 0; i < numberOfSelectedDishes; i++) {
 			var dish = fullMenu[i];
 			var dishName = dish.name;
 			var dishImage = 'images/'+ dish.image;
+			var dishDescription = dish.description.substr(0, 37) + '...';
 			
-			$('#overview-preparation-list').empty();
+			//$('#overview-preparation-list').empty(); TODO this gives problems now
 			$('#overview-preparation-list').append(
 				'<div class="row has-background has-extra-padding">'+
 					'<div class="background"></div>'+
@@ -207,7 +208,7 @@ var HomeView = function (container, model) {
 				'</div>'
 			);
 		}
-	}
+	});
 
 	function loadPage(pageSelector) {
 		$('.page').hide();
