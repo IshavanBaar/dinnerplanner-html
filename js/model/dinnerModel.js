@@ -64,6 +64,7 @@ var DinnerModel = function() {
 		this.menu.push(dish);
 	}
 	
+	//Gives true iff dish is in menu.
 	this.dishIsInMenu = function(id) {
 		for (var i = 0; i< menu.length; i++) {
 			if (menu[i].id === id) {

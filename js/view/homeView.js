@@ -58,10 +58,10 @@ var HomeView = function (container, model) {
 	
 	// Fills available dishes in dish selection screen
 	$('#availableDishes').ready(function fillAvailableDishes() {
-		var fullMenu = model.getAllDishes();
-		var numberOfMenuItems = fullMenu.length;
+		var allDishes = model.getAllDishes();
+		var numberOfMenuItems = allDishes.length;
 		for (var i = 0; i < numberOfMenuItems; i++) {
-			var dish = fullMenu[i];
+			var dish = allDishes[i];
 			var dishId = dish.id;
 			var dishName = dish.name;
 			var dishImage = 'images/'+ dish.image;
@@ -148,6 +148,62 @@ var HomeView = function (container, model) {
 			currentDishPrice += ingredientPrice;
 		}
 		return Math.round(currentDishPrice * 10)/10;
+	}
+	
+	//Fills the dish overview page.
+	function fillPageDishOverview() {
+		var fullMenu = model.getFullMenu();
+		var numberOfSelectedDishes = fullMenu.length;
+		for (var i = 0; i < numberOfSelectedDishes; i++) {
+			var dish = fullMenu[i];
+			var dishName = dish.name;
+			var dishImage = 'images/'+ dish.image;
+			
+			$('.overview-dish-list').empty();
+			$('.overview-dish-list').append(
+				'<li>'+
+					'<a href="#" id="toPagePreparation">'+
+						'<img src="'+dishImage+'" alt="'+dishName+'" title="'+dishName+'/>'+
+					'<div class="dish-title">'+dishName+'</div></a>'+
+					'<div class="dish-price">'+'999'+'</div>'+ //TODO change -999 to dishPrice
+				'</li>'
+			);
+		}
+		
+		//At the end, append total price.
+		$('.overview-dish-list').append(
+			'<li class="before-total"></li>'+
+			'<li class="total">Total:<br/><b>999 SEK</b></li>' //TODO change 999 to dishPrice
+		);
+	}
+	
+	//Fills the preparation page after print button has been hit.
+	function fillPagePreparation() {	
+		var fullMenu = model.getFullMenu();
+		var numberOfSelectedDishes = fullMenu.length;
+		for (var i = 0; i < numberOfSelectedDishes; i++) {
+			var dish = fullMenu[i];
+			var dishName = dish.name;
+			var dishImage = 'images/'+ dish.image;
+			
+			$('#overview-preparation-list').empty();
+			$('#overview-preparation-list').append(
+				'<div class="row has-background has-extra-padding">'+
+					'<div class="background"></div>'+
+					'<div class="col-md-2"><img class="dish-image" src="'+dishImage+'" title="'+dishName+'"/></div>'+
+					'<div class="col-md-4">'+
+						'<h4 class="dish-name">'+dishName+'</h4>'+
+						'<p class="dish-description">'+dishDescription+'</p>'+
+					'</div>'+
+					'<div class="col-md-6">'+
+						'<h4>Preparation</h4>'+
+						'<p class="dish-preparation">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio.'+
+						'<br/><br/>'+
+						'Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus.</p>'+
+					'</div>'+
+				'</div>'
+			);
+		}
 	}
 
 	function loadPage(pageSelector) {
