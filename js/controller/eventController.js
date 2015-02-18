@@ -14,7 +14,7 @@ var EventController = function(view, model) {
 	////
 	$('#startButton').click(function() {
 		// reset everything
-		model.setNumberOfGuests(0);
+		model.setNumberOfGuests(1);
 		view.currentDish = null;
 		view.update('#pageSelectDish');		
 	});
@@ -29,7 +29,9 @@ var EventController = function(view, model) {
 		// update model
 		model.setNumberOfGuests(guestCount);
 		// update relevant fields
-		$('.guest-count').html(guestCount);
+		$('.guest-count').html(guestCount);		
+		view.updateSidebar();
+		view.fillPageDishDetail();
 	});
 
 	function getIntValue(value) {
@@ -49,7 +51,11 @@ var EventController = function(view, model) {
 			var dishId = $(this).attr('dish-id');
 			var dish = model.getDish(parseInt(dishId));
 
+			$('#confirmDishButton').attr('dish-id', dishId);
+
 			view.currentDish = dish;
+
+			view.updateSidebar();
 			view.update('#pageDishDetail');
 		});	
 	});
@@ -57,9 +63,22 @@ var EventController = function(view, model) {
 	////
 	// Handle confirmation of dish
 	////
-	$('#confirm-dish-button').click(function(dish-id) {
-		model.addDishToMenu(dish-id);		
+	$('#confirmDishButton').click(function() {
+		var dishId = $(this).attr('dish-id');
+
+		// clear current dish
+		view.currentDish = null;
+
+		model.addDishToMenu(dishId);
+
+		view.updateSidebar();
 		view.update('#pageSelectDish');
-	}
-	
+	});
+
+	////
+	// Handle back to select dish button
+	////
+	$('#pageDishDetail').on('click', '#dishDetailBackButton', function() {
+		view.update('#pageSelectDish');
+	});	
 }

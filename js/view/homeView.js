@@ -36,25 +36,30 @@ var HomeView = function (container, model) {
       max: 100,
       min: 1,
       initval: 1
-    });
+    });    	
 
-	// Confirm dish by adding it to list
-	$('#confirm-dish-button').click(function addDishToList() {
+	this.updateSidebar = function() {
+		var tableRef = $('#dinnerCheckList tbody').empty();		
 
-		var tableRef = $('#dinnerCheckList tbody'); 
-		
-		var quantity = 1; // We can keep this 1 by default since there is no quantity chooser
-		var dishName = currentDish.name;
-		var dishCosts = getCurrentDishPrice(currentDish);
-		
-		// Add row to table
-		tableRef.prepend('<tr class="align-left"><td>'+quantity+'</td><td class="align-center">'+dishName+'</td><td class="align-right">'+dishCosts+'</td></tr>');
-		
-		// Change total costs
-		var oldCosts = $('#totalCosts').text();
-		var newCosts = Math.round((parseFloat(oldCosts) + dishCosts)* 10)/10;
-		$('#totalCosts').text(newCosts);
-	});
+		var quantity = model.getNumberOfGuests();
+
+		// update pending dish
+		if (this.currentDish) {
+			$('.pending-price').html(getCurrentDishPrice(this.currentDish) * quantity);
+		} else {
+			$('.pending-price').html('0');
+		}
+
+		// update menu
+		var menu = model.getFullMenu();
+		for (var i = 0; i < menu.length; i++) {
+			var dishName = menu[i].name;
+			var dishCost = getCurrentDishPrice(menu[i]) * quantity;
+			tableRef.prepend('<tr class="align-left"><td>'+quantity+'</td><td class="align-center">'+dishName+'</td><td class="align-right">'+dishCost+'</td></tr>');
+		}
+		var cost = model.getTotalMenuPrice();
+		$('.total').html(cost * quantity);
+	}
 	
 	// Fills available dishes in dish selection screen
 	$('#availableDishes').ready(function fillAvailableDishes() {
@@ -80,7 +85,8 @@ var HomeView = function (container, model) {
 	});
 
 	// Fills dish detail page
-	function fillPageDishDetail(currentDish) {
+	this.fillPageDishDetail = function() {
+		var currentDish = this.currentDish;
 		// get fields
 		var dishName = currentDish.name;
 		var dishImage = 'images/'+ currentDish.image;
@@ -88,13 +94,15 @@ var HomeView = function (container, model) {
 		var dishIngredients = currentDish.ingredients;
 		var dishPreparation = dummyText;
 
+		var guests = model.getNumberOfGuests();
+
 		// Fill dish name and description fields
 		$('#dishNameDescription').empty();
 		$('#dishNameDescription').append(
 			'<h2 class="page-header">'+dishName+'</h2>'+
 			'<div class="image-wrap"><img class="dish-image" src="'+dishImage+'"/></div>'+
 			'<p class="dish-description">'+dishDescription+'</p>' +
-			'<button id="dishDetailBackButton" location="toPageSelectDish" class="page-switch-button">Back to Select Dish</button>'
+			'<button id="dishDetailBackButton">Back to Select Dish</button>'
 		);			
 
 		// Fill dish ingredients table
@@ -104,9 +112,9 @@ var HomeView = function (container, model) {
 			var ingredient = dishIngredients[i];
 			
 			var ingredientName = ingredient.name;
-			var ingredientQuantity = ingredient.quantity;
+			var ingredientQuantity = Math.round(ingredient.quantity * guests * 10)/10;
 			var ingredientUnit = ingredient.unit;
-			var ingredientPrice = ingredient.price;
+			var ingredientPrice = ingredient.price * guests;
 			
 			$('#dishIngredients').append(
 				'<tr>'+
@@ -124,13 +132,8 @@ var HomeView = function (container, model) {
 		$('#dishPreparation').append(			
 			'<h2 class="page-header">Preparation</h2>'+			
 			'<p class="dish-preparation">'+dishPreparation+'</p>'	
-		)
-
-		// handle back button click
-		$('.page-switch-button#dishDetailBackButton').click(function() {
-			loadPage('#pageSelectDish');
-		});
-	}
+		)		
+	}	
 	
 	function getCurrentDishPrice(dish) {
 		var dishIngredients = dish.ingredients;
@@ -155,15 +158,20 @@ var HomeView = function (container, model) {
 		$(pageSelector).show();
 	}
 
-	// deleted. update the model in controller, not in view		
+	////
+	// Functions to update the view
+	////		
 
 	this.update = function(page) {
 		// load dynamic fields
 		// - number of guests
-		$('.spinner').val(model.getNumberOfGuests());
+		var guestCount = model.getNumberOfGuests();
+		$('.spinner').val(guestCount);
+		$('.guest-count').html(guestCount);
+
 		// - selected dish
 		if (this.currentDish) {
-			fillPageDishDetail(this.currentDish);
+			this.fillPageDishDetail();
 		}
 		// TODO something here on loading the selectDish page
 		

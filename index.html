@@ -69,18 +69,18 @@
 						<th class="align-right">Cost</th>
 					</tr>
 				  </thead>
-				  <tbody>
-					<tr>
-						<td class="align-left pending-items"> </td>
-						<td class="align-center pending-items">Pending</td>
-						<td class="align-right pending-items">0.00</td>
-					</tr>
+				  <tbody>					
 				  </tbody>
 				  <tfoot>
+				  	<tr>
+						<td class="align-left pending-items"> </td>
+						<td class="align-center pending-items">Pending</td>
+						<td class="align-right pending-items pending-price">0</td>
+					</tr>			  	
 					<tr>
 						<td class="align-left pending-items"> </td>
 						<td class="align-center pending-items total-cost-items">SEK</td>
-						<td id="totalCosts" class="align-right pending-items total-cost-items">0.00</td>
+						<td class="align-right pending-items total">0</td>
 					</tr>
 				  </tfoot>
 				</table>
@@ -134,18 +134,18 @@
 								<th class="align-right">Cost</th>
 							</tr>
 						</thead>
-						<tbody>
-							<tr>
-								<td class="align-left pending-items"> </td>
-								<td class="align-center pending-items">Pending</td>
-								<td class="align-right pending-items">0.00</td>
-							</tr>
+						<tbody>							
 						</tbody>
 						<tfoot>
 							<tr>
 								<td class="align-left pending-items"> </td>
+								<td class="align-center pending-items">Pending</td>
+								<td class="align-right pending-items pending-price">0</td>
+							</tr>
+							<tr>
+								<td class="align-left pending-items"> </td>
 								<td class="align-center pending-items total-cost-items">SEK</td>
-								<td id="totalCosts" class="align-right pending-items total-cost-items">0.00</td>
+								<td class="align-right pending-items total">0</td>
 							</tr>
 						</tfoot>
 					</table>
@@ -165,7 +165,7 @@
 								<!-- Here come the dish ingredients when button is clicked-->
 							</tbody>
 						</table>
-						<button id="confirm-dish-button" location="toPageSelectDish" class="page-switch-button">Confirm Dish</button>
+						<button id="confirmDishButton">Confirm Dish</button>
 					</div>
 					<!-- TODO something with current dish price here-->
 					

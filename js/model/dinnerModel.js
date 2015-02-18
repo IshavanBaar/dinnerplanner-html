@@ -43,7 +43,7 @@ var DinnerModel = function() {
 
 	//Returns the total price of the menu (all the ingredients multiplied by number of guests).
 	this.getTotalMenuPrice = function() {
-		var totalPrice = 0;
+		var total = 0;
 		var ingredients = this.getAllIngredients();
 		for (var i = 0; i < ingredients.length; i++) {
 			total += ingredients[i].price;
@@ -57,15 +57,17 @@ var DinnerModel = function() {
 	this.addDishToMenu = function(id) {
 		var dish = this.getDish(id);
 		// check if the dish already existed
-		if (dishIsInMenu(id)) {
-			removeDishFromMenu(dish.id);
+		if (this.isDishInMenu(id)) {
+			//removeDishFromMenu(id);
 			// TODO increase quantity of dish in menu with one
 		}
 		this.menu.push(dish);
 	}
 	
-	this.dishIsInMenu = function(id) {
-		for (var i = 0; i< menu.length; i++) {
+	// check if dish is in menu or not
+	this.isDishInMenu =  function(id) {
+		var menu = this.getFullMenu();
+		for (var i = 0; i < menu.length; i++) {
 			if (menu[i].id === id) {
 				return true;
 			}
