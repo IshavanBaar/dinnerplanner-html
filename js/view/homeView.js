@@ -159,8 +159,8 @@ var HomeView = function (container, model) {
 			$('.overview-dish-list').append(
 				'<li>'+
 					'<a href="#" id="toPagePreparation">'+
-						'<img src="'+dishImage+'" alt="'+dishName+'" title="'+dishName+'/>'+
-					'<div class="dish-title">'+dishName+'</div></a>'+
+						'<img src="'+dishImage+'" alt="'+dishName+'" title="'+dishName+'"/></a>'+
+						'<div class="dish-title">'+dishName+'</div>'+
 					'<div class="dish-price">'+dishCost+' SEK</div>'+
 				'</li>'
 			);

@@ -5,8 +5,8 @@ var EventController = function(view, model) {
 	////
 	$('#startButton').click(function() {
 		// reset everything
-		model.setNumberOfGuests(1);
-		view.currentDish = null;
+		//model.setNumberOfGuests(1);
+		//view.currentDish = null;
 		view.update('#pageSelectDish');		
 	});
 	
@@ -91,6 +91,10 @@ var EventController = function(view, model) {
 	$('#confirmDinnerButton').click(function() {
 		view.update('#pageDinnerOverview');
 	});
+
+	$('#toPageSelectDishButton').click(function() {
+		view.update('#pageSelectDish');
+	});	
 	
 	
 }
