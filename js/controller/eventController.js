@@ -5,9 +5,15 @@ var EventController = function(view, model) {
 	////
 	$('#startButton').click(function() {
 		// reset everything
-		//model.setNumberOfGuests(1);
-		//view.currentDish = null;
-		view.update('#pageSelectDish');		
+		model.setNumberOfGuests(1);
+		view.currentDish = null;
+
+		model.menu = [];
+
+		var allDishes = model.getAllDishes();		
+		view.fillAvailableDishes(allDishes);
+		view.updateSidebar();
+		view.update('#pageSelectDish');	
 	});
 	
 	$('#homeButton').click(function() {
@@ -37,23 +43,34 @@ var EventController = function(view, model) {
 		}
 	}
 
+	$('#searchButton').click(function() {
+
+		// clear old data
+		$('#availableDishes').empty();
+
+		var type = $('#typeInput').val();
+		var filter = $('#filterInput').val();
+		var dishes = model.getAllDishes(type, filter);
+
+		view.fillAvailableDishes(dishes);
+		view.update('#pageSelectDish');	
+	});
+
 	////
 	// Handle dish selection changed
 	////
-	$('#availableDishes').ready(function() {
-		$('a.dish-item').click(function() {
+	$('#availableDishes').on('click','a.dish-item', function() {
 
-			var dishId = $(this).attr('dish-id');
-			var dish = model.getDish(parseInt(dishId));
+		var dishId = $(this).attr('dish-id');
+		var dish = model.getDish(parseInt(dishId));
 
-			$('#confirmDishButton').attr('dish-id', dishId);
+		$('#confirmDishButton').attr('dish-id', dishId);
 
-			view.currentDish = dish;
+		view.currentDish = dish;
 
-			view.updateSidebar();
-			view.update('#pageDishDetail');
-		});	
-	});
+		view.updateSidebar();
+		view.update('#pageDishDetail');
+	});	
 	
 	////
 	// Handle confirmation of dish

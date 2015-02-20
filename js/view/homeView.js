@@ -50,11 +50,10 @@ var HomeView = function (container, model) {
 	}
 	
 	// Fills available dishes in dish selection screen
-	$('#availableDishes').ready(function fillAvailableDishes() {
-		var allDishes = model.getAllDishes();
-		var numberOfMenuItems = allDishes.length;
+	this.fillAvailableDishes = function(dishes) {
+		var numberOfMenuItems = dishes.length;
 		for (var i = 0; i < numberOfMenuItems; i++) {
-			var dish = allDishes[i];
+			var dish = dishes[i];
 			var dishId = dish.id;
 			var dishName = dish.name;
 			var dishImage = 'images/'+ dish.image;
@@ -68,9 +67,7 @@ var HomeView = function (container, model) {
 				'</li>'
 			);
 		}
-		
-		// deleted. handle dish click event in controller
-	});
+	}
 
 	// Fills dish detail page
 	this.fillPageDishDetail = function() {
@@ -205,7 +202,7 @@ var HomeView = function (container, model) {
 	}
 
 	function loadPage(pageSelector) {
-		$('.page').hide();
+		$('.page').hide();		
 		$(pageSelector).show();
 	}
 
@@ -213,7 +210,7 @@ var HomeView = function (container, model) {
 	// Functions to update the view
 	////		
 
-	this.update = function(page) {
+	this.update = function(page) {		
 		// load dynamic fields
 		// - number of guests
 		var guestCount = model.getNumberOfGuests();

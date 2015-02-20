@@ -95,18 +95,18 @@
 				<!-- Select dish header -->
 				<div class="row" id="selectDishHeader">									
 					<div class="col-md-5">
-						<input type="text" placeholder="Enter key words">
+						<input type="text" placeholder="Enter key words" id="filterInput">
 					</div>
 					<div class="col-md-5">
-						<select class="form-control">
-							<option value="" selected disabled>Please select</option>
-							<option>Starter</option>
-							<option>Main</option>
-							<option>Desert</option>
+						<select class="form-control" id="typeInput">
+							<option value="" selected>All types</option>
+							<option value="starter">Starter</option>
+							<option value="main dish">Main Dish</option>
+							<option value="dessert">Dessert</option>
 							<!-- TODO search/filter functionality -->
 						</select>
 					</div>
-					<div class="col-md-2"><button type="submit" class="page-search-button">Search</button></div>
+					<div class="col-md-2"><button type="submit" class="page-search-button" id="searchButton">Search</button></div>
 				</div>
 				<!-- Select dish content -->
 				<div class="row align-center has-top-space">

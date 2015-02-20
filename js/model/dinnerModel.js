@@ -92,18 +92,31 @@ var DinnerModel = function() {
 	  return $(dishes).filter(function(index,dish) {
 		var found = true;
 		if(filter){
+			// ignore case-sensitive
+			var dishName = dish.name.toLowerCase();
+			filter = filter.toLowerCase();
+
 			found = false;
 			$.each(dish.ingredients,function(index,ingredient) {
-				if(ingredient.name.indexOf(filter)!=-1) {
+				var ingredientName = ingredient.name.toLowerCase();
+				if(ingredientName.indexOf(filter)!=-1) {
 					found = true;
 				}
 			});
-			if(dish.name.indexOf(filter) != -1)
+			if(dishName.indexOf(filter) != -1)
 			{
 				found = true;
 			}
 		}
-		return type ? dish.type == type && found : dish;	  	 
+		if (found) {
+			if (type) {
+				if (dish.type == type) {
+					return dish;
+				}
+			} else {
+				return dish;
+			}	
+		}
 	  });	
 	}
 
