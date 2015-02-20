@@ -1,5 +1,4 @@
 var EventController = function(view, model) {
-
 	////
 	// Start new dinner
 	////
