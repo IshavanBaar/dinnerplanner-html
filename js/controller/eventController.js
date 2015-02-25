@@ -105,11 +105,16 @@ var EventController = function(view, model) {
 	////
 	// Handle confirm dinner button that leads to dinner overview
 	////
-	$('#confirmDinnerButton').click(function() {
+	$('.confirm-dinner-button').click(function() {
+		var menu = model.getFullMenu();
+		if (menu.length == 0) {
+			alert('You should add something to your menu first');
+			return;
+		}
 		view.update('#pageDinnerOverview');
 	});
 
-	$('#toPageSelectDishButton').click(function() {
+	$('.back-to-select-dish').click(function() {
 		view.update('#pageSelectDish');
 	});	
 	

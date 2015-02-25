@@ -223,8 +223,11 @@ var HomeView = function (container, model) {
 		}
 
 		// fill information in dish overview and preparation pages
-		this.fillPagePreparation();
-		this.fillPageDishOverview();
+		var menu = model.getFullMenu();
+		if (menu.length > 0) {
+			this.fillPagePreparation();
+			this.fillPageDishOverview();
+		}		
 		
 		// load the page
 		loadPage(page);
